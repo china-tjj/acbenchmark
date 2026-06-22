@@ -1,0 +1,342 @@
+goos: darwin
+goarch: arm64
+pkg: acbenchmark
+cpu: Apple M4 Pro
+Benchmark/Build/china-tjj/cn_100-14         	   71524	     16918 ns/op	      3888 retained-B	   11768 B/op	      32 allocs/op
+Benchmark/Match/china-tjj/cn_100-14         	    1180	   1088279 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/china-tjj(SL)/cn_100-14     	   68229	     17286 ns/op	      4176 retained-B	   12280 B/op	      33 allocs/op
+Benchmark/Match/china-tjj(SL)/cn_100-14     	    1226	    942741 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/china-tjj(U64)/cn_100-14    	   65713	     21010 ns/op	     11392 retained-B	   34888 B/op	      32 allocs/op
+Benchmark/Match/china-tjj(U64)/cn_100-14    	    1250	   1063313 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/china-tjj(SL+U64)/cn_100-14 	   60027	     18742 ns/op	     13424 retained-B	   36936 B/op	      33 allocs/op
+Benchmark/Match/china-tjj(SL+U64)/cn_100-14 	    1324	    892948 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/BobuSumisu-ac/cn_100-14     	    5488	    233364 ns/op	   1405632 retained-B	 1575905 B/op	    1948 allocs/op
+Benchmark/Match/BobuSumisu-ac/cn_100-14     	    2604	    411411 ns/op	  320440 B/op	    2955 allocs/op
+Benchmark/Build/BobuSumisu-go-ac/cn_100-14  	    3174	    385486 ns/op	     33536 retained-B	   62312 B/op	      86 allocs/op
+Benchmark/Match/BobuSumisu-go-ac/cn_100-14  	    2312	    509903 ns/op	  273400 B/op	    2955 allocs/op
+Benchmark/Build/anknown/cn_100-14           	    5324	    221666 ns/op	   1493896 retained-B	 2790506 B/op	    1714 allocs/op
+Benchmark/Match/anknown/cn_100-14           	    2550	    464506 ns/op	  166904 B/op	    2954 allocs/op
+Benchmark/Build/sepetrov/cn_100-14          	   36649	     32997 ns/op	     45368 retained-B	   60168 B/op	     704 allocs/op
+Benchmark/Match/sepetrov/cn_100-14          	    2116	    561549 ns/op	   89672 B/op	    3341 allocs/op
+Benchmark/Build/cloudflare/cn_100-14        	    1900	    608842 ns/op	   3392112 retained-B	 3422584 B/op	    1599 allocs/op
+Benchmark/Match/cloudflare/cn_100-14        	    3699	    309402 ns/op	    2040 B/op	       8 allocs/op
+Benchmark/Build/petar-dambovaliev/cn_100-14 	   14312	     96899 ns/op	     98824 retained-B	  232168 B/op	    2169 allocs/op
+Benchmark/Match/petar-dambovaliev/cn_100-14 	     976	   1230700 ns/op	  401376 B/op	    5898 allocs/op
+Benchmark/Build/iohub/cn_100-14             	   20613	     56847 ns/op	     53880 retained-B	  128584 B/op	    1978 allocs/op
+Benchmark/Match/iohub/cn_100-14             	    2022	    570383 ns/op	  141300 B/op	    2941 allocs/op
+Benchmark/Build/ClarkThan/cn_100-14         	   42218	     28345 ns/op	     42536 retained-B	   46888 B/op	     670 allocs/op
+Benchmark/Match/ClarkThan/cn_100-14         	    1870	    636953 ns/op	  344368 B/op	    2955 allocs/op
+Benchmark/Build/pgavlin/cn_100-14           	   14493	     82299 ns/op	    105352 retained-B	  230944 B/op	    2069 allocs/op
+Benchmark/Match/pgavlin/cn_100-14           	     997	   1215939 ns/op	  294816 B/op	    5896 allocs/op
+Benchmark/Build/gnames/cn_100-14            	   10000	    123491 ns/op	    161280 retained-B	  195504 B/op	    2410 allocs/op
+Benchmark/Match/gnames/cn_100-14            	     555	   2154480 ns/op	  890512 B/op	   16221 allocs/op
+Benchmark/Build/china-tjj/cn_1000-14        	    6002	    187617 ns/op	     35504 retained-B	  107880 B/op	      41 allocs/op
+Benchmark/Match/china-tjj/cn_1000-14        	     819	   1413520 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/china-tjj(SL)/cn_1000-14    	    5898	    188757 ns/op	     40880 retained-B	  113256 B/op	      42 allocs/op
+Benchmark/Match/china-tjj(SL)/cn_1000-14    	     865	   1358306 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/china-tjj(U64)/cn_1000-14   	    5809	    198522 ns/op	    108816 retained-B	  331864 B/op	      41 allocs/op
+Benchmark/Match/china-tjj(U64)/cn_1000-14   	     908	   1292605 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/china-tjj(SL+U64)/cn_1000-14         	    5217	    201605 ns/op	    129488 retained-B	  352344 B/op	      42 allocs/op
+Benchmark/Match/china-tjj(SL+U64)/cn_1000-14         	     936	   1250412 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/BobuSumisu-ac/cn_1000-14             	     645	   1915885 ns/op	  12583040 retained-B	14161152 B/op	   17200 allocs/op
+Benchmark/Match/BobuSumisu-ac/cn_1000-14             	    2374	    491963 ns/op	  319960 B/op	    2945 allocs/op
+Benchmark/Build/BobuSumisu-go-ac/cn_1000-14          	     100	  11213435 ns/op	    286848 retained-B	  744744 B/op	     472 allocs/op
+Benchmark/Match/BobuSumisu-go-ac/cn_1000-14          	    2136	    560580 ns/op	  273080 B/op	    2945 allocs/op
+Benchmark/Build/anknown/cn_1000-14                   	    1626	    649211 ns/op	   1653840 retained-B	 3737345 B/op	   16455 allocs/op
+Benchmark/Match/anknown/cn_1000-14                   	    2594	    468564 ns/op	  166584 B/op	    2944 allocs/op
+Benchmark/Build/sepetrov/cn_1000-14                  	    3406	    336917 ns/op	    436040 retained-B	  613480 B/op	    6498 allocs/op
+Benchmark/Match/sepetrov/cn_1000-14                  	    1370	    854044 ns/op	  226688 B/op	    5072 allocs/op
+Benchmark/Build/cloudflare/cn_1000-14                	     229	   5727414 ns/op	  33316400 retained-B	33684463 B/op	   14599 allocs/op
+Benchmark/Match/cloudflare/cn_1000-14                	    1820	    662722 ns/op	   25208 B/op	      12 allocs/op
+Benchmark/Build/petar-dambovaliev/cn_1000-14         	    1390	    874867 ns/op	    683136 retained-B	 2320060 B/op	   19826 allocs/op
+Benchmark/Match/petar-dambovaliev/cn_1000-14         	     724	   1658379 ns/op	  401056 B/op	    5878 allocs/op
+Benchmark/Build/iohub/cn_1000-14                     	    2181	    543554 ns/op	    438400 retained-B	 1175080 B/op	   17820 allocs/op
+Benchmark/Match/iohub/cn_1000-14                     	    1824	    648345 ns/op	  140834 B/op	    2931 allocs/op
+Benchmark/Build/ClarkThan/cn_1000-14                 	    4009	    298587 ns/op	    408464 retained-B	  447760 B/op	    6436 allocs/op
+Benchmark/Match/ClarkThan/cn_1000-14                 	    1413	    941616 ns/op	  344208 B/op	    2945 allocs/op
+Benchmark/Build/pgavlin/cn_1000-14                   	    1386	    856416 ns/op	    677504 retained-B	 2308056 B/op	   18826 allocs/op
+Benchmark/Match/pgavlin/cn_1000-14                   	     762	   1600957 ns/op	  294496 B/op	    5876 allocs/op
+Benchmark/Build/gnames/cn_1000-14                    	    1050	   1171406 ns/op	   1432520 retained-B	 1795818 B/op	   21723 allocs/op
+Benchmark/Match/gnames/cn_1000-14                    	     482	   2506498 ns/op	  888577 B/op	   16166 allocs/op
+Benchmark/Build/china-tjj/cn_10000-14                	     638	   1838506 ns/op	    379432 retained-B	 1016132 B/op	      76 allocs/op
+Benchmark/Match/china-tjj/cn_10000-14                	    1173	    994290 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/china-tjj(SL)/cn_10000-14            	     632	   1866857 ns/op	    428680 retained-B	 1065286 B/op	      77 allocs/op
+Benchmark/Match/china-tjj(SL)/cn_10000-14            	    1285	    939242 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/china-tjj(U64)/cn_10000-14           	     577	   2058605 ns/op	   1090184 retained-B	 3101762 B/op	      76 allocs/op
+Benchmark/Match/china-tjj(U64)/cn_10000-14           	    1119	   1082810 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/china-tjj(SL+U64)/cn_10000-14        	     519	   2055997 ns/op	   1278504 retained-B	 3289956 B/op	      77 allocs/op
+Benchmark/Match/china-tjj(SL+U64)/cn_10000-14        	    1166	   1024709 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/BobuSumisu-ac/cn_10000-14            	      72	  15549583 ns/op	 115982464 retained-B	131303048 B/op	  158926 allocs/op
+Benchmark/Match/BobuSumisu-ac/cn_10000-14            	    1466	    812796 ns/op	  320392 B/op	    2954 allocs/op
+Benchmark/Build/BobuSumisu-go-ac/cn_10000-14         	       2	 745828812 ns/op	   2654336 retained-B	 9350384 B/op	    7225 allocs/op
+Benchmark/Match/BobuSumisu-go-ac/cn_10000-14         	    1483	    820795 ns/op	  273368 B/op	    2954 allocs/op
+Benchmark/Build/anknown/cn_10000-14                  	     201	   5904807 ns/op	   3940728 retained-B	17470613 B/op	  156636 allocs/op
+Benchmark/Match/anknown/cn_10000-14                  	    1729	    667881 ns/op	  166872 B/op	    2953 allocs/op
+Benchmark/Build/sepetrov/cn_10000-14                 	     338	   3536482 ns/op	   3949728 retained-B	 5357201 B/op	   59767 allocs/op
+Benchmark/Match/sepetrov/cn_10000-14                 	     903	   1339914 ns/op	  371504 B/op	    5539 allocs/op
+Benchmark/Build/cloudflare/cn_10000-14               	      16	  74443599 ns/op	 332573328 retained-B	336426952 B/op	  136552 allocs/op
+Benchmark/Match/cloudflare/cn_10000-14               	     824	   1586453 ns/op	   60024 B/op	      14 allocs/op
+Benchmark/Build/petar-dambovaliev/cn_10000-14        	     122	  11945246 ns/op	   5867736 retained-B	23852241 B/op	  182479 allocs/op
+Benchmark/Match/petar-dambovaliev/cn_10000-14        	     470	   2436906 ns/op	  401344 B/op	    5896 allocs/op
+Benchmark/Build/iohub/cn_10000-14                    	     216	   5393934 ns/op	   3488944 retained-B	10123592 B/op	  162290 allocs/op
+Benchmark/Match/iohub/cn_10000-14                    	    1138	   1003843 ns/op	  141768 B/op	    2940 allocs/op
+Benchmark/Build/ClarkThan/cn_10000-14                	     326	   3106435 ns/op	   3713544 retained-B	 4025846 B/op	   59577 allocs/op
+Benchmark/Match/ClarkThan/cn_10000-14                	     939	   1297635 ns/op	  344352 B/op	    2954 allocs/op
+Benchmark/Build/pgavlin/cn_10000-14                  	     100	  10286966 ns/op	   5867640 retained-B	23731936 B/op	  172479 allocs/op
+Benchmark/Match/pgavlin/cn_10000-14                  	     506	   2647379 ns/op	  294784 B/op	    5894 allocs/op
+Benchmark/Build/gnames/cn_10000-14                   	      93	  12788830 ns/op	  13141264 retained-B	17497315 B/op	  204049 allocs/op
+Benchmark/Match/gnames/cn_10000-14                   	     337	   3568585 ns/op	  881232 B/op	   16147 allocs/op
+Benchmark/Build/china-tjj/cn_100000-14               	      51	  24156426 ns/op	   4613608 retained-B	15032176 B/op	    7778 allocs/op
+Benchmark/Match/china-tjj/cn_100000-14               	     723	   1592198 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/china-tjj(SL)/cn_100000-14           	      48	  24276681 ns/op	   5342792 retained-B	15761266 B/op	    7779 allocs/op
+Benchmark/Match/china-tjj(SL)/cn_100000-14           	     669	   1564064 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/china-tjj(U64)/cn_100000-14          	      48	  26251885 ns/op	   8529384 retained-B	27925934 B/op	    7777 allocs/op
+Benchmark/Match/china-tjj(U64)/cn_100000-14          	     666	   1855810 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/china-tjj(SL+U64)/cn_100000-14       	      45	  26290407 ns/op	   9979368 retained-B	29376688 B/op	    7779 allocs/op
+Benchmark/Match/china-tjj(SL+U64)/cn_100000-14       	     684	   1692311 ns/op	  368288 B/op	      14 allocs/op
+Benchmark/Build/BobuSumisu-ac/cn_100000-14           	       3	 345730820 ns/op	 958685312 retained-B	1081141168 B/op	 1285121 allocs/op
+Benchmark/Match/BobuSumisu-ac/cn_100000-14           	     375	   3537734 ns/op	  318280 B/op	    2910 allocs/op
+Benchmark/Build/BobuSumisu-go-ac/cn_100000-14        	       1	45353830167 ns/op	  20340864 retained-B	77367216 B/op	   40817 allocs/op
+Benchmark/Match/BobuSumisu-go-ac/cn_100000-14        	     813	   1486702 ns/op	  271960 B/op	    2910 allocs/op
+Benchmark/Build/anknown/cn_100000-14                 	      15	  67211806 ns/op	  18074112 retained-B	116224891 B/op	 1282558 allocs/op
+Benchmark/Match/anknown/cn_100000-14                 	    1117	   1048015 ns/op	  165464 B/op	    2909 allocs/op
+Benchmark/Build/sepetrov/cn_100000-14                	      26	  43784630 ns/op	  27625456 retained-B	38764161 B/op	  460357 allocs/op
+Benchmark/Match/sepetrov/cn_100000-14                	     496	   2357012 ns/op	  370840 B/op	    5805 allocs/op
+Benchmark/Build/cloudflare/cn_100000-14              	       1	1189995333 ns/op	3325492096 retained-B	3362591344 B/op	 1172074 allocs/op
+Benchmark/Match/cloudflare/cn_100000-14              	     169	   7481397 ns/op	   87288 B/op	      15 allocs/op
+Benchmark/Build/petar-dambovaliev/cn_100000-14       	       5	 229195467 ns/op	  52831656 retained-B	240501337 B/op	 1557422 allocs/op
+Benchmark/Match/petar-dambovaliev/cn_100000-14       	     151	   8598259 ns/op	  399936 B/op	    5808 allocs/op
+Benchmark/Build/iohub/cn_100000-14                   	      15	  69320667 ns/op	  27893328 retained-B	82737470 B/op	 1354684 allocs/op
+Benchmark/Match/iohub/cn_100000-14                   	     664	   1791805 ns/op	  140058 B/op	    2896 allocs/op
+Benchmark/Build/ClarkThan/cn_100000-14               	      26	  41780070 ns/op	  26487904 retained-B	30814762 B/op	  459253 allocs/op
+Benchmark/Match/ClarkThan/cn_100000-14               	     530	   2228225 ns/op	  343648 B/op	    2910 allocs/op
+Benchmark/Build/pgavlin/cn_100000-14                 	       5	 227768125 ns/op	  52831464 retained-B	239365628 B/op	 1457429 allocs/op
+Benchmark/Match/pgavlin/cn_100000-14                 	     148	   8536025 ns/op	  293376 B/op	    5806 allocs/op
+Benchmark/Build/gnames/cn_100000-14                  	       7	 164679839 ns/op	 104981512 retained-B	145401914 B/op	 1735874 allocs/op
+Benchmark/Match/gnames/cn_100000-14                  	     100	  11172276 ns/op	  871136 B/op	   15898 allocs/op
+Benchmark/Build/china-tjj/en_100-14                  	   50954	     23916 ns/op	      6832 retained-B	   19912 B/op	      29 allocs/op
+Benchmark/Match/china-tjj/en_100-14                  	     500	   2358632 ns/op	  245408 B/op	      13 allocs/op
+Benchmark/Build/china-tjj(SL)/en_100-14              	   48453	     24218 ns/op	      7760 retained-B	   20936 B/op	      30 allocs/op
+Benchmark/Match/china-tjj(SL)/en_100-14              	     596	   2034948 ns/op	  245408 B/op	      13 allocs/op
+Benchmark/Build/china-tjj(U64)/en_100-14             	   46048	     25998 ns/op	     20592 retained-B	   63576 B/op	      29 allocs/op
+Benchmark/Match/china-tjj(U64)/en_100-14             	     543	   2221943 ns/op	  245408 B/op	      13 allocs/op
+Benchmark/Build/china-tjj(SL+U64)/en_100-14          	   46197	     26373 ns/op	     24688 retained-B	   67672 B/op	      30 allocs/op
+Benchmark/Match/china-tjj(SL+U64)/en_100-14          	     639	   1869504 ns/op	  245408 B/op	      13 allocs/op
+Benchmark/Build/BobuSumisu-ac/en_100-14              	    7204	    168435 ns/op	   1057568 retained-B	 1182424 B/op	    1440 allocs/op
+Benchmark/Match/BobuSumisu-ac/en_100-14              	    2262	    491123 ns/op	  233896 B/op	    1663 allocs/op
+Benchmark/Build/BobuSumisu-go-ac/en_100-14           	    4500	    264596 ns/op	     30208 retained-B	   58472 B/op	      79 allocs/op
+Benchmark/Match/BobuSumisu-go-ac/en_100-14           	    1968	    621288 ns/op	  207512 B/op	    1663 allocs/op
+Benchmark/Build/anknown/en_100-14                    	   12817	     92663 ns/op	     39216 retained-B	  196784 B/op	    3008 allocs/op
+Benchmark/Match/anknown/en_100-14                    	     792	   1514419 ns/op	  101016 B/op	    1662 allocs/op
+Benchmark/Build/sepetrov/en_100-14                   	   15758	     76568 ns/op	    104496 retained-B	  133816 B/op	    1512 allocs/op
+Benchmark/Match/sepetrov/en_100-14                   	     567	   2154310 ns/op	   56224 B/op	    2157 allocs/op
+Benchmark/Build/cloudflare/en_100-14                 	    2366	    506910 ns/op	   2573776 retained-B	 2609026 B/op	    1225 allocs/op
+Benchmark/Match/cloudflare/en_100-14                 	    2878	    424285 ns/op	    2040 B/op	       8 allocs/op
+Benchmark/Build/petar-dambovaliev/en_100-14          	   16194	     74920 ns/op	     98064 retained-B	  187280 B/op	    1662 allocs/op
+Benchmark/Match/petar-dambovaliev/en_100-14          	     795	   1513051 ns/op	  285728 B/op	    3277 allocs/op
+Benchmark/Build/iohub/en_100-14                      	   25926	     46648 ns/op	     53688 retained-B	  115848 B/op	    1499 allocs/op
+Benchmark/Match/iohub/en_100-14                      	    1442	    785815 ns/op	   79378 B/op	    1650 allocs/op
+Benchmark/Build/ClarkThan/en_100-14                  	   20258	     59675 ns/op	     95280 retained-B	   98272 B/op	    1426 allocs/op
+Benchmark/Match/ClarkThan/en_100-14                  	     590	   2029803 ns/op	  537072 B/op	    1663 allocs/op
+Benchmark/Build/pgavlin/en_100-14                    	   16458	     73651 ns/op	     98064 retained-B	  186408 B/op	    1562 allocs/op
+Benchmark/Match/pgavlin/en_100-14                    	     783	   1515963 ns/op	  179168 B/op	    3275 allocs/op
+Benchmark/Build/gnames/en_100-14                     	   10000	    104379 ns/op	    117016 retained-B	  140392 B/op	    1857 allocs/op
+Benchmark/Match/gnames/en_100-14                     	     508	   2364034 ns/op	  427456 B/op	    8178 allocs/op
+Benchmark/Build/china-tjj/en_1000-14                 	    4572	    243302 ns/op	     60272 retained-B	  185344 B/op	     104 allocs/op
+Benchmark/Match/china-tjj/en_1000-14                 	     404	   2923234 ns/op	  745120 B/op	      16 allocs/op
+Benchmark/Build/china-tjj(SL)/en_1000-14             	    4350	    245649 ns/op	     69648 retained-B	  194816 B/op	     105 allocs/op
+Benchmark/Match/china-tjj(SL)/en_1000-14             	     482	   2467193 ns/op	  745120 B/op	      16 allocs/op
+Benchmark/Build/china-tjj(U64)/en_1000-14            	    4058	    252072 ns/op	    190736 retained-B	  585168 B/op	     104 allocs/op
+Benchmark/Match/china-tjj(U64)/en_1000-14            	     444	   2746976 ns/op	  745120 B/op	      16 allocs/op
+Benchmark/Build/china-tjj(SL+U64)/en_1000-14         	    3997	    261017 ns/op	    231600 retained-B	  626128 B/op	     105 allocs/op
+Benchmark/Match/china-tjj(SL+U64)/en_1000-14         	     518	   2307702 ns/op	  745120 B/op	      16 allocs/op
+Benchmark/Build/BobuSumisu-ac/en_1000-14             	     900	   1268941 ns/op	   8668224 retained-B	 9763257 B/op	   11628 allocs/op
+Benchmark/Match/BobuSumisu-ac/en_1000-14             	    1508	    792105 ns/op	  499224 B/op	    4975 allocs/op
+Benchmark/Build/BobuSumisu-go-ac/en_1000-14          	     205	   5865849 ns/op	    204928 retained-B	  505768 B/op	     478 allocs/op
+Benchmark/Match/BobuSumisu-go-ac/en_1000-14          	    1552	    727509 ns/op	  419896 B/op	    4975 allocs/op
+Benchmark/Build/anknown/en_1000-14                   	    1326	    897726 ns/op	    300664 retained-B	 1778611 B/op	   25682 allocs/op
+Benchmark/Match/anknown/en_1000-14                   	     867	   1361959 ns/op	  313400 B/op	    4974 allocs/op
+Benchmark/Build/sepetrov/en_1000-14                  	    1834	    680260 ns/op	    836048 retained-B	 1050560 B/op	   11779 allocs/op
+Benchmark/Match/sepetrov/en_1000-14                  	     414	   3018083 ns/op	  218424 B/op	    7338 allocs/op
+Benchmark/Build/cloudflare/en_1000-14                	     272	   4317406 ns/op	  24990480 retained-B	25264827 B/op	   10407 allocs/op
+Benchmark/Match/cloudflare/en_1000-14                	    1489	    806188 ns/op	   14968 B/op	      11 allocs/op
+Benchmark/Build/petar-dambovaliev/en_1000-14         	    1712	    671087 ns/op	    474032 retained-B	 1494824 B/op	   14187 allocs/op
+Benchmark/Match/petar-dambovaliev/en_1000-14         	     517	   2231387 ns/op	  687873 B/op	    9470 allocs/op
+Benchmark/Build/iohub/en_1000-14                     	    2662	    469481 ns/op	    438592 retained-B	 1029528 B/op	   12109 allocs/op
+Benchmark/Match/iohub/en_1000-14                     	    1062	   1102680 ns/op	  240266 B/op	    4956 allocs/op
+Benchmark/Build/ClarkThan/en_1000-14                 	    2086	    570851 ns/op	    766736 retained-B	  795872 B/op	   11611 allocs/op
+Benchmark/Match/ClarkThan/en_1000-14                 	     444	   2765734 ns/op	  700545 B/op	    4974 allocs/op
+Benchmark/Build/pgavlin/en_1000-14                   	    1838	    661406 ns/op	    473840 retained-B	 1486024 B/op	   13187 allocs/op
+Benchmark/Match/pgavlin/en_1000-14                   	     553	   2199911 ns/op	  581312 B/op	    9468 allocs/op
+Benchmark/Build/gnames/en_1000-14                    	    1130	   1034716 ns/op	    978672 retained-B	 1294705 B/op	   15682 allocs/op
+Benchmark/Match/gnames/en_1000-14                    	     384	   3149526 ns/op	 1071618 B/op	   21681 allocs/op
+Benchmark/Build/china-tjj/en_10000-14                	     349	   3425645 ns/op	    467120 retained-B	 1657313 B/op	     600 allocs/op
+Benchmark/Match/china-tjj/en_10000-14                	     297	   4017842 ns/op	 4095648 B/op	      22 allocs/op
+Benchmark/Build/china-tjj(SL)/en_10000-14            	     333	   3526281 ns/op	    540848 retained-B	 1731040 B/op	     601 allocs/op
+Benchmark/Match/china-tjj(SL)/en_10000-14            	     334	   3597300 ns/op	 4095648 B/op	      22 allocs/op
+Benchmark/Build/china-tjj(U64)/en_10000-14           	     315	   3961887 ns/op	   1409200 retained-B	 5300400 B/op	     600 allocs/op
+Benchmark/Match/china-tjj(U64)/en_10000-14           	     308	   4024601 ns/op	 4095648 B/op	      22 allocs/op
+Benchmark/Build/china-tjj(SL+U64)/en_10000-14        	     298	   4159596 ns/op	   1687824 retained-B	 5578928 B/op	     601 allocs/op
+Benchmark/Match/china-tjj(SL+U64)/en_10000-14        	     334	   3623340 ns/op	 4095648 B/op	      22 allocs/op
+Benchmark/Build/BobuSumisu-ac/en_10000-14            	     117	   9587080 ns/op	  71327872 retained-B	80258736 B/op	   94839 allocs/op
+Benchmark/Match/BobuSumisu-ac/en_10000-14            	     619	   1866313 ns/op	 1976248 B/op	   23122 allocs/op
+Benchmark/Build/BobuSumisu-go-ac/en_10000-14         	       4	 264769823 ns/op	   1630336 retained-B	 5521000 B/op	    4450 allocs/op
+Benchmark/Match/BobuSumisu-go-ac/en_10000-14         	     745	   1618759 ns/op	 1606648 B/op	   23122 allocs/op
+Benchmark/Build/anknown/en_10000-14                  	     100	  11400028 ns/op	   3334064 retained-B	18660137 B/op	  233499 allocs/op
+Benchmark/Match/anknown/en_10000-14                  	     486	   2433580 ns/op	 1500152 B/op	   23121 allocs/op
+Benchmark/Build/sepetrov/en_10000-14                 	     166	   7139847 ns/op	   6731816 retained-B	 9163640 B/op	   96177 allocs/op
+Benchmark/Match/sepetrov/en_10000-14                 	     219	   5418099 ns/op	 1061465 B/op	   36942 allocs/op
+Benchmark/Build/cloudflare/en_10000-14               	      21	  53120913 ns/op	 255560976 retained-B	258295010 B/op	   89675 allocs/op
+Benchmark/Match/cloudflare/en_10000-14               	     696	   1757398 ns/op	   87288 B/op	      15 allocs/op
+Benchmark/Build/petar-dambovaliev/en_10000-14        	     152	   7893502 ns/op	   3944304 retained-B	16110248 B/op	  129182 allocs/op
+Benchmark/Match/petar-dambovaliev/en_10000-14        	     277	   4454947 ns/op	 3320964 B/op	   42460 allocs/op
+Benchmark/Build/iohub/en_10000-14                    	     279	   4436550 ns/op	   3489136 retained-B	 8378985 B/op	   99429 allocs/op
+Benchmark/Match/iohub/en_10000-14                    	     462	   2579411 ns/op	 1156833 B/op	   22949 allocs/op
+Benchmark/Build/ClarkThan/en_10000-14                	     214	   5896791 ns/op	   6183848 retained-B	 6421867 B/op	   94818 allocs/op
+Benchmark/Match/ClarkThan/en_10000-14                	     261	   4551877 ns/op	 2172610 B/op	   23122 allocs/op
+Benchmark/Build/pgavlin/en_10000-14                  	     153	   7839111 ns/op	   3944784 retained-B	16021499 B/op	  119182 allocs/op
+Benchmark/Match/pgavlin/en_10000-14                  	     260	   4465357 ns/op	 3214403 B/op	   42458 allocs/op
+Benchmark/Build/gnames/en_10000-14                   	      90	  17014925 ns/op	   7834584 retained-B	10952404 B/op	  134199 allocs/op
+Benchmark/Match/gnames/en_10000-14                   	     174	   6315234 ns/op	 5088357 B/op	   95738 allocs/op
+Benchmark/Build/china-tjj/en_100000-14               	      26	  52426236 ns/op	   6537392 retained-B	28369144 B/op	    5304 allocs/op
+Benchmark/Match/china-tjj/en_100000-14               	     192	   6407951 ns/op	13909664 B/op	      27 allocs/op
+Benchmark/Build/china-tjj(SL)/en_100000-14           	      24	  47637927 ns/op	   7684272 retained-B	29516024 B/op	    5305 allocs/op
+Benchmark/Match/china-tjj(SL)/en_100000-14           	     196	   5946102 ns/op	13909667 B/op	      27 allocs/op
+Benchmark/Build/china-tjj(U64)/en_100000-14          	      22	  49130669 ns/op	  11919536 retained-B	52740024 B/op	    5304 allocs/op
+Benchmark/Match/china-tjj(U64)/en_100000-14          	     166	   6949008 ns/op	13909666 B/op	      27 allocs/op
+Benchmark/Build/china-tjj(SL+U64)/en_100000-14       	      21	  52207054 ns/op	  14213296 retained-B	55033784 B/op	    5305 allocs/op
+Benchmark/Match/china-tjj(SL+U64)/en_100000-14       	     172	   6822789 ns/op	13909664 B/op	      27 allocs/op
+Benchmark/Build/BobuSumisu-ac/en_100000-14           	       6	 203384000 ns/op	 594624640 retained-B	668399920 B/op	  781862 allocs/op
+Benchmark/Match/BobuSumisu-ac/en_100000-14           	     171	   6129797 ns/op	 6307048 B/op	   71368 allocs/op
+Benchmark/Build/BobuSumisu-go-ac/en_100000-14        	       1	16492383875 ns/op	  12927104 retained-B	48716592 B/op	   43525 allocs/op
+Benchmark/Match/BobuSumisu-go-ac/en_100000-14        	     324	   3606963 ns/op	 5165592 B/op	   71368 allocs/op
+Benchmark/Build/anknown/en_100000-14                 	       7	 164350155 ns/op	  44297056 retained-B	201562482 B/op	 2304858 allocs/op
+Benchmark/Match/anknown/en_100000-14                 	     141	   8368736 ns/op	 5059096 B/op	   71367 allocs/op
+Benchmark/Build/sepetrov/en_100000-14                	      10	 101376296 ns/op	  54477992 retained-B	72184424 B/op	  797759 allocs/op
+Benchmark/Match/sepetrov/en_100000-14                	      72	  15093730 ns/op	 4069624 B/op	  150986 allocs/op
+Benchmark/Build/cloudflare/en_100000-14              	       2	 845479625 ns/op	2646535184 retained-B	2674390344 B/op	  783436 allocs/op
+Benchmark/Match/cloudflare/en_100000-14              	     157	   7929585 ns/op	  488696 B/op	      20 allocs/op
+Benchmark/Build/petar-dambovaliev/en_100000-14       	       6	 173256771 ns/op	  34888864 retained-B	139927384 B/op	 1258635 allocs/op
+Benchmark/Match/petar-dambovaliev/en_100000-14       	     186	   7317484 ns/op	 8743911 B/op	  108502 allocs/op
+Benchmark/Build/iohub/en_100000-14                   	      21	  58302542 ns/op	  27893616 retained-B	68377594 B/op	  824009 allocs/op
+Benchmark/Match/iohub/en_100000-14                   	     163	   7110933 ns/op	 4035556 B/op	   70537 allocs/op
+Benchmark/Build/ClarkThan/en_100000-14               	      12	  98003208 ns/op	  50149928 retained-B	52183696 B/op	  781835 allocs/op
+Benchmark/Match/ClarkThan/en_100000-14               	      88	  11982300 ns/op	 6532290 B/op	   71368 allocs/op
+Benchmark/Build/pgavlin/en_100000-14                 	       7	 159933333 ns/op	  34888768 retained-B	139033896 B/op	 1158635 allocs/op
+Benchmark/Match/pgavlin/en_100000-14                 	     194	   6176427 ns/op	 8637351 B/op	  108500 allocs/op
+Benchmark/Build/gnames/en_100000-14                  	       7	 174700006 ns/op	  63758664 retained-B	93473683 B/op	 1165657 allocs/op
+Benchmark/Match/gnames/en_100000-14                  	      55	  18805802 ns/op	16860853 B/op	  287345 allocs/op
+Benchmark/Build/china-tjj/mix_100-14                 	   56500	     21716 ns/op	      5488 retained-B	   16136 B/op	      32 allocs/op
+Benchmark/Match/china-tjj/mix_100-14                 	     817	   1470716 ns/op	  745120 B/op	      16 allocs/op
+Benchmark/Build/china-tjj(SL)/mix_100-14             	   55374	     21891 ns/op	      5968 retained-B	   16904 B/op	      33 allocs/op
+Benchmark/Match/china-tjj(SL)/mix_100-14             	     907	   1443585 ns/op	  745120 B/op	      16 allocs/op
+Benchmark/Build/china-tjj(U64)/mix_100-14            	   51706	     22772 ns/op	     15888 retained-B	   48088 B/op	      32 allocs/op
+Benchmark/Match/china-tjj(U64)/mix_100-14            	     871	   1340499 ns/op	  745120 B/op	      16 allocs/op
+Benchmark/Build/china-tjj(SL+U64)/mix_100-14         	   50053	     23416 ns/op	     19152 retained-B	   51160 B/op	      33 allocs/op
+Benchmark/Match/china-tjj(SL+U64)/mix_100-14         	     964	   1253767 ns/op	  745120 B/op	      16 allocs/op
+Benchmark/Build/BobuSumisu-ac/mix_100-14             	    5025	    201910 ns/op	   1275392 retained-B	 1436304 B/op	    1764 allocs/op
+Benchmark/Match/BobuSumisu-ac/mix_100-14             	    2407	    485565 ns/op	  458424 B/op	    4125 allocs/op
+Benchmark/Build/BobuSumisu-go-ac/mix_100-14          	    3436	    347898 ns/op	     32864 retained-B	   62952 B/op	      89 allocs/op
+Benchmark/Match/BobuSumisu-go-ac/mix_100-14          	    1996	    587336 ns/op	  392696 B/op	    4125 allocs/op
+Benchmark/Build/anknown/mix_100-14                   	    5634	    212787 ns/op	   1240768 retained-B	 2093465 B/op	    2328 allocs/op
+Benchmark/Match/anknown/mix_100-14                   	    1309	    887027 ns/op	  286200 B/op	    4124 allocs/op
+Benchmark/Build/sepetrov/mix_100-14                  	   22538	     54036 ns/op	     74456 retained-B	   97328 B/op	    1105 allocs/op
+Benchmark/Match/sepetrov/mix_100-14                  	    1240	    954935 ns/op	  130200 B/op	    4501 allocs/op
+Benchmark/Build/cloudflare/mix_100-14                	    1944	    573398 ns/op	   2989552 retained-B	 3025313 B/op	    1466 allocs/op
+Benchmark/Match/cloudflare/mix_100-14                	    2833	    391724 ns/op	    2040 B/op	       8 allocs/op
+Benchmark/Build/petar-dambovaliev/mix_100-14         	   13492	     88360 ns/op	    132856 retained-B	  258080 B/op	    1976 allocs/op
+Benchmark/Match/petar-dambovaliev/mix_100-14         	     843	   1430036 ns/op	  668128 B/op	    8236 allocs/op
+Benchmark/Build/iohub/mix_100-14                     	   21730	     53827 ns/op	     47928 retained-B	  124264 B/op	    1814 allocs/op
+Benchmark/Match/iohub/mix_100-14                     	    1803	    621467 ns/op	  197390 B/op	    4109 allocs/op
+Benchmark/Build/ClarkThan/mix_100-14                 	   27387	     43992 ns/op	     68840 retained-B	   72808 B/op	    1030 allocs/op
+Benchmark/Match/ClarkThan/mix_100-14                 	     944	   1265225 ns/op	  518481 B/op	    4124 allocs/op
+Benchmark/Build/pgavlin/mix_100-14                   	   13813	     87183 ns/op	    132952 retained-B	  256992 B/op	    1876 allocs/op
+Benchmark/Match/pgavlin/mix_100-14                   	     847	   1404845 ns/op	  561568 B/op	    8234 allocs/op
+Benchmark/Build/gnames/mix_100-14                    	   10000	    114912 ns/op	    146272 retained-B	  177848 B/op	    2210 allocs/op
+Benchmark/Match/gnames/mix_100-14                    	     468	   2616706 ns/op	 1370785 B/op	   22114 allocs/op
+Benchmark/Build/china-tjj/mix_1000-14                	    4947	    233228 ns/op	     49424 retained-B	  157024 B/op	      57 allocs/op
+Benchmark/Match/china-tjj/mix_1000-14                	     598	   2018306 ns/op	  745120 B/op	      16 allocs/op
+Benchmark/Build/china-tjj(SL)/mix_1000-14            	    4752	    235518 ns/op	     57520 retained-B	  165216 B/op	      58 allocs/op
+Benchmark/Match/china-tjj(SL)/mix_1000-14            	     672	   1803801 ns/op	  745120 B/op	      16 allocs/op
+Benchmark/Build/china-tjj(U64)/mix_1000-14           	    4186	    244368 ns/op	    145680 retained-B	  481648 B/op	      57 allocs/op
+Benchmark/Match/china-tjj(U64)/mix_1000-14           	     663	   1801961 ns/op	  745120 B/op	      16 allocs/op
+Benchmark/Build/china-tjj(SL+U64)/mix_1000-14        	    4435	    249877 ns/op	    174448 retained-B	  510320 B/op	      58 allocs/op
+Benchmark/Match/china-tjj(SL+U64)/mix_1000-14        	     710	   1664309 ns/op	  745120 B/op	      16 allocs/op
+Benchmark/Build/BobuSumisu-ac/mix_1000-14            	     679	   1771573 ns/op	  11288704 retained-B	12706032 B/op	   15356 allocs/op
+Benchmark/Match/BobuSumisu-ac/mix_1000-14            	    1873	    593832 ns/op	  469464 B/op	    4355 allocs/op
+Benchmark/Build/BobuSumisu-go-ac/mix_1000-14         	     128	   9367326 ns/op	    270464 retained-B	  720936 B/op	     544 allocs/op
+Benchmark/Match/BobuSumisu-go-ac/mix_1000-14         	    1669	    670381 ns/op	  400056 B/op	    4355 allocs/op
+Benchmark/Build/anknown/mix_1000-14                  	    1228	    944229 ns/op	   1668896 retained-B	 4353107 B/op	   22020 allocs/op
+Benchmark/Match/anknown/mix_1000-14                  	    1341	    881507 ns/op	  293560 B/op	    4354 allocs/op
+Benchmark/Build/sepetrov/mix_1000-14                 	    2049	    589625 ns/op	    695056 retained-B	  970736 B/op	    9817 allocs/op
+Benchmark/Match/sepetrov/mix_1000-14                 	     872	   1393242 ns/op	  272272 B/op	    7340 allocs/op
+Benchmark/Build/cloudflare/mix_1000-14               	     228	   5154967 ns/op	  29292112 retained-B	29626021 B/op	   13142 allocs/op
+Benchmark/Match/cloudflare/mix_1000-14               	    1515	    872217 ns/op	   25208 B/op	      12 allocs/op
+Benchmark/Build/petar-dambovaliev/mix_1000-14        	    1519	    789141 ns/op	    605768 retained-B	 1906144 B/op	   17779 allocs/op
+Benchmark/Match/petar-dambovaliev/mix_1000-14        	     609	   1955099 ns/op	  671969 B/op	    8476 allocs/op
+Benchmark/Build/iohub/mix_1000-14                    	    2241	    519844 ns/op	    438400 retained-B	 1125416 B/op	   15848 allocs/op
+Benchmark/Match/iohub/mix_1000-14                    	    1388	    807947 ns/op	  209238 B/op	    4339 allocs/op
+Benchmark/Build/ClarkThan/mix_1000-14                	    2522	    472235 ns/op	    642280 retained-B	  684696 B/op	    9666 allocs/op
+Benchmark/Match/ClarkThan/mix_1000-14                	     730	   1647769 ns/op	  518992 B/op	    4354 allocs/op
+Benchmark/Build/pgavlin/mix_1000-14                  	    1531	    776532 ns/op	    605576 retained-B	 1895696 B/op	   16779 allocs/op
+Benchmark/Match/pgavlin/mix_1000-14                  	     602	   2001260 ns/op	  565408 B/op	    8474 allocs/op
+Benchmark/Build/gnames/mix_1000-14                   	    1033	   1162195 ns/op	   1280408 retained-B	 1623817 B/op	   19696 allocs/op
+Benchmark/Match/gnames/mix_1000-14                   	     412	   2907521 ns/op	 1364883 B/op	   22910 allocs/op
+Benchmark/Build/china-tjj/mix_10000-14               	     436	   2727613 ns/op	    469544 retained-B	 1389168 B/op	     351 allocs/op
+Benchmark/Match/china-tjj/mix_10000-14               	     721	   1664076 ns/op	 1023648 B/op	      17 allocs/op
+Benchmark/Build/china-tjj(SL)/mix_10000-14           	     438	   2791388 ns/op	    535080 retained-B	 1454704 B/op	     352 allocs/op
+Benchmark/Match/china-tjj(SL)/mix_10000-14           	     804	   1498729 ns/op	 1023648 B/op	      17 allocs/op
+Benchmark/Build/china-tjj(U64)/mix_10000-14          	     362	   3037496 ns/op	   1360520 retained-B	 4253280 B/op	     351 allocs/op
+Benchmark/Match/china-tjj(U64)/mix_10000-14          	     715	   1722085 ns/op	 1023648 B/op	      17 allocs/op
+Benchmark/Build/china-tjj(SL+U64)/mix_10000-14       	     340	   3481700 ns/op	   1606184 retained-B	 4499040 B/op	     352 allocs/op
+Benchmark/Match/china-tjj(SL+U64)/mix_10000-14       	     776	   1516536 ns/op	 1023648 B/op	      17 allocs/op
+Benchmark/Build/BobuSumisu-ac/mix_10000-14           	      84	  12743560 ns/op	  97419392 retained-B	109959272 B/op	  132542 allocs/op
+Benchmark/Match/BobuSumisu-ac/mix_10000-14           	    1132	   1011939 ns/op	  652600 B/op	    6806 allocs/op
+Benchmark/Build/BobuSumisu-go-ac/mix_10000-14        	       2	 511590708 ns/op	   2130048 retained-B	 7314288 B/op	    6379 allocs/op
+Benchmark/Match/BobuSumisu-go-ac/mix_10000-14        	    1252	    952834 ns/op	  543992 B/op	    6806 allocs/op
+Benchmark/Build/anknown/mix_10000-14                 	      63	  20736963 ns/op	   3081264 retained-B	15739381 B/op	  198074 allocs/op
+Benchmark/Match/anknown/mix_10000-14                 	     890	   1339202 ns/op	  437496 B/op	    6805 allocs/op
+Benchmark/Build/sepetrov/mix_10000-14                	     211	   5739492 ns/op	   5715408 retained-B	 7881480 B/op	   81894 allocs/op
+Benchmark/Match/sepetrov/mix_10000-14                	     498	   2367716 ns/op	  737859 B/op	   13313 allocs/op
+Benchmark/Build/cloudflare/mix_10000-14              	      19	  66207638 ns/op	 291865312 retained-B	295244144 B/op	  116671 allocs/op
+Benchmark/Match/cloudflare/mix_10000-14              	     747	   1852401 ns/op	  128248 B/op	      16 allocs/op
+Benchmark/Build/petar-dambovaliev/mix_10000-14       	     136	   8737172 ns/op	   4888360 retained-B	19809124 B/op	  158746 allocs/op
+Benchmark/Match/petar-dambovaliev/mix_10000-14       	     411	   3010455 ns/op	  897856 B/op	   11843 allocs/op
+Benchmark/Build/iohub/mix_10000-14                   	     231	   5011638 ns/op	   3483280 retained-B	 9387994 B/op	  136097 allocs/op
+Benchmark/Match/iohub/mix_10000-14                   	     883	   1321988 ns/op	  336232 B/op	    6746 allocs/op
+Benchmark/Build/ClarkThan/mix_10000-14               	     261	   4628489 ns/op	   5296344 retained-B	 5646225 B/op	   81150 allocs/op
+Benchmark/Match/ClarkThan/mix_10000-14               	     499	   2392070 ns/op	  777968 B/op	    6806 allocs/op
+Benchmark/Build/pgavlin/mix_10000-14                 	     100	  10454801 ns/op	   4888072 retained-B	19705187 B/op	  148746 allocs/op
+Benchmark/Match/pgavlin/mix_10000-14                 	     404	   2880561 ns/op	  791296 B/op	   11841 allocs/op
+Benchmark/Build/gnames/mix_10000-14                  	      87	  12285047 ns/op	  10911216 retained-B	14602027 B/op	  174906 allocs/op
+Benchmark/Match/gnames/mix_10000-14                  	     280	   4268111 ns/op	 1746465 B/op	   32714 allocs/op
+Benchmark/Build/china-tjj/mix_100000-14              	      34	  33892369 ns/op	   5747560 retained-B	20772440 B/op	    3659 allocs/op
+Benchmark/Match/china-tjj/mix_100000-14              	     450	   2647303 ns/op	 3161760 B/op	      21 allocs/op
+Benchmark/Build/china-tjj(SL)/mix_100000-14          	      32	  35776889 ns/op	   6730600 retained-B	21755480 B/op	    3660 allocs/op
+Benchmark/Match/china-tjj(SL)/mix_100000-14          	     468	   2508964 ns/op	 3161760 B/op	      21 allocs/op
+Benchmark/Build/china-tjj(U64)/mix_100000-14         	      32	  36806758 ns/op	  10552168 retained-B	38612920 B/op	    3659 allocs/op
+Benchmark/Match/china-tjj(U64)/mix_100000-14         	     414	   2910882 ns/op	 3161760 B/op	      21 allocs/op
+Benchmark/Build/china-tjj(SL+U64)/mix_100000-14      	      30	  42065917 ns/op	  12510056 retained-B	40570808 B/op	    3660 allocs/op
+Benchmark/Match/china-tjj(SL+U64)/mix_100000-14      	     430	   2853657 ns/op	 3161760 B/op	      21 allocs/op
+Benchmark/Build/BobuSumisu-ac/mix_100000-14          	       4	 267192104 ns/op	 827195520 retained-B	935083088 B/op	 1106716 allocs/op
+Benchmark/Match/BobuSumisu-ac/mix_100000-14          	     440	   2884512 ns/op	 1471080 B/op	   16522 allocs/op
+Benchmark/Build/BobuSumisu-go-ac/mix_100000-14       	       1	33477833000 ns/op	  16752768 retained-B	62910256 B/op	   47818 allocs/op
+Benchmark/Match/BobuSumisu-go-ac/mix_100000-14       	     636	   1820657 ns/op	 1207064 B/op	   16522 allocs/op
+Benchmark/Build/anknown/mix_100000-14                	       7	 162945815 ns/op	  27427208 retained-B	151749094 B/op	 1815237 allocs/op
+Benchmark/Match/anknown/mix_100000-14                	     483	   2411274 ns/op	 1100568 B/op	   16521 allocs/op
+Benchmark/Build/sepetrov/mix_100000-14               	      15	  76192867 ns/op	  43173288 retained-B	58279294 B/op	  656327 allocs/op
+Benchmark/Match/sepetrov/mix_100000-14               	     199	   5809059 ns/op	 1749301 B/op	   38525 allocs/op
+Benchmark/Build/cloudflare/mix_100000-14             	       1	1012477166 ns/op	2974228128 retained-B	3007874464 B/op	 1026517 allocs/op
+Benchmark/Match/cloudflare/mix_100000-14             	     199	   6776306 ns/op	  259320 B/op	      18 allocs/op
+Benchmark/Build/petar-dambovaliev/mix_100000-14      	       5	 204624575 ns/op	  45698760 retained-B	193406979 B/op	 1460488 allocs/op
+Benchmark/Match/petar-dambovaliev/mix_100000-14      	     200	   5884823 ns/op	 2002497 B/op	   26102 allocs/op
+Benchmark/Build/iohub/mix_100000-14                  	      18	  62043984 ns/op	  27893232 retained-B	77510856 B/op	 1160670 allocs/op
+Benchmark/Match/iohub/mix_100000-14                  	     378	   3068461 ns/op	  882833 B/op	   16022 allocs/op
+Benchmark/Build/ClarkThan/mix_100000-14              	      15	  68294319 ns/op	  40210032 retained-B	42318174 B/op	  648550 allocs/op
+Benchmark/Match/ClarkThan/mix_100000-14              	     235	   5801707 ns/op	 1557280 B/op	   16522 allocs/op
+Benchmark/Build/pgavlin/mix_100000-14                	       5	 202206942 ns/op	  45698568 retained-B	192357888 B/op	 1360488 allocs/op
+Benchmark/Match/pgavlin/mix_100000-14                	     183	   6549741 ns/op	 1895936 B/op	   26100 allocs/op
+Benchmark/Build/gnames/mix_100000-14                 	       6	 169973201 ns/op	  90917464 retained-B	128398912 B/op	 1526330 allocs/op
+Benchmark/Match/gnames/mix_100000-14                 	     100	  10321986 ns/op	 4174097 B/op	   70049 allocs/op
+PASS
+ok  	acbenchmark	600.993s
