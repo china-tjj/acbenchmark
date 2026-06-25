@@ -2,12 +2,14 @@ module acbenchmark
 
 go 1.23.2
 
+// replace github.com/china-tjj/acautomaton => ../acautomaton
+
 require (
 	github.com/BobuSumisu/aho-corasick v1.0.3
 	github.com/BobuSumisu/go-ahocorasick v0.0.0-20190713155435-9d454b2085de
 	github.com/ClarkThan/ahocorasick v0.1.2
 	github.com/anknown/ahocorasick v0.0.0-20190904063843-d75dbd5169c0
-	github.com/china-tjj/acautomaton v1.0.0
+	github.com/china-tjj/acautomaton v1.0.2
 	github.com/cloudflare/ahocorasick v0.0.0-20240916140611-054963ec9396
 	github.com/gnames/aho_corasick v0.1.5
 	github.com/iohub/ahocorasick v0.0.0-20240118134817-7d0e3abf6181

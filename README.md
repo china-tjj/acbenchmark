@@ -53,58 +53,58 @@
 
 | Library | 100 | 1,000 | 10,000 | 100,000 |
 |---|---|---|---|---|
-| china-tjj | 16.9µs | 187.6µs | 1.84ms | 24.16ms |
-| china-tjj(SL) | 17.3µs | 188.8µs | 1.87ms | 24.28ms |
-| china-tjj(U64) | 21.0µs | 198.5µs | 2.06ms | 26.25ms |
-| china-tjj(SL+U64) | 18.7µs | 201.6µs | 2.06ms | 26.29ms |
-| BobuSumisu-ac | 233.4µs | 1.92ms | 15.55ms | 345.73ms |
-| BobuSumisu-go-ac | 385.5µs | 11.21ms | 745.83ms | 45.354s |
-| anknown | 221.7µs | 649.2µs | 5.90ms | 67.21ms |
-| sepetrov | 33.0µs | 336.9µs | 3.54ms | 43.78ms |
-| cloudflare | 608.8µs | 5.73ms | 74.44ms | 1.190s |
-| petar-dambovaliev | 96.9µs | 874.9µs | 11.95ms | 229.20ms |
-| iohub | 56.8µs | 543.6µs | 5.39ms | 69.32ms |
-| ClarkThan | 28.3µs | 298.6µs | 3.11ms | 41.78ms |
-| pgavlin | 82.3µs | 856.4µs | 10.29ms | 227.77ms |
-| gnames | 123.5µs | 1.17ms | 12.79ms | 164.68ms |
+| china-tjj | 15.8µs | 178.6µs | 1.75ms | 21.92ms |
+| china-tjj(SL) | 16.3µs | 183.1µs | 1.79ms | 22.48ms |
+| china-tjj(U64) | 18.0µs | 191.3µs | 1.95ms | 23.26ms |
+| china-tjj(SL+U64) | 17.8µs | 194.1µs | 1.96ms | 24.44ms |
+| BobuSumisu-ac | 215.7µs | 1.68ms | 13.89ms | 285.81ms |
+| BobuSumisu-go-ac | 369.0µs | 10.91ms | 724.36ms | 44.450s |
+| anknown | 225.4µs | 625.6µs | 5.70ms | 60.65ms |
+| sepetrov | 33.0µs | 319.8µs | 3.39ms | 40.52ms |
+| cloudflare | 595.2µs | 5.12ms | 58.75ms | 833.15ms |
+| petar-dambovaliev | 79.2µs | 843.8µs | 9.09ms | 213.04ms |
+| iohub | 53.9µs | 534.6µs | 5.18ms | 58.30ms |
+| ClarkThan | 27.7µs | 294.2µs | 2.98ms | 47.64ms |
+| pgavlin | 103.3µs | 826.4µs | 9.49ms | 259.35ms |
+| gnames | 116.4µs | 1.12ms | 12.05ms | 169.85ms |
 
 #### 纯英文
 
 | Library | 100 | 1,000 | 10,000 | 100,000 |
 |---|---|---|---|---|
-| china-tjj | 23.9µs | 243.3µs | 3.43ms | 52.43ms |
-| china-tjj(SL) | 24.2µs | 245.6µs | 3.53ms | 47.64ms |
-| china-tjj(U64) | 26.0µs | 252.1µs | 3.96ms | 49.13ms |
-| china-tjj(SL+U64) | 26.4µs | 261.0µs | 4.16ms | 52.21ms |
-| BobuSumisu-ac | 168.4µs | 1.27ms | 9.59ms | 203.38ms |
-| BobuSumisu-go-ac | 264.6µs | 5.87ms | 264.77ms | 16.492s |
-| anknown | 92.7µs | 897.7µs | 11.40ms | 164.35ms |
-| sepetrov | 76.6µs | 680.3µs | 7.14ms | 101.38ms |
-| cloudflare | 506.9µs | 4.32ms | 53.12ms | 845.48ms |
-| petar-dambovaliev | 74.9µs | 671.1µs | 7.89ms | 173.26ms |
-| iohub | 46.6µs | 469.5µs | 4.44ms | 58.30ms |
-| ClarkThan | 59.7µs | 570.9µs | 5.90ms | 98.00ms |
-| pgavlin | 73.7µs | 661.4µs | 7.84ms | 159.93ms |
-| gnames | 104.4µs | 1.03ms | 17.01ms | 174.70ms |
+| china-tjj | 22.6µs | 219.5µs | 3.35ms | 42.11ms |
+| china-tjj(SL) | 22.8µs | 232.1µs | 3.47ms | 44.59ms |
+| china-tjj(U64) | 24.8µs | 246.6µs | 3.84ms | 42.35ms |
+| china-tjj(SL+U64) | 25.0µs | 255.0µs | 3.96ms | 46.72ms |
+| BobuSumisu-ac | 169.3µs | 1.30ms | 9.37ms | 229.69ms |
+| BobuSumisu-go-ac | 259.1µs | 5.67ms | 259.54ms | 15.950s |
+| anknown | 92.4µs | 930.8µs | 10.39ms | 151.55ms |
+| sepetrov | 75.5µs | 658.4µs | 7.29ms | 88.18ms |
+| cloudflare | 490.4µs | 4.35ms | 54.32ms | 665.30ms |
+| petar-dambovaliev | 74.4µs | 664.7µs | 9.94ms | 153.12ms |
+| iohub | 49.4µs | 415.3µs | 4.51ms | 45.74ms |
+| ClarkThan | 59.4µs | 549.4µs | 6.05ms | 85.55ms |
+| pgavlin | 77.7µs | 666.9µs | 8.74ms | 153.54ms |
+| gnames | 103.9µs | 1.03ms | 11.33ms | 145.25ms |
 
 #### 中英混合
 
 | Library | 100 | 1,000 | 10,000 | 100,000 |
 |---|---|---|---|---|
-| china-tjj | 21.7µs | 233.2µs | 2.73ms | 33.89ms |
-| china-tjj(SL) | 21.9µs | 235.5µs | 2.79ms | 35.78ms |
-| china-tjj(U64) | 22.8µs | 244.4µs | 3.04ms | 36.81ms |
-| china-tjj(SL+U64) | 23.4µs | 249.9µs | 3.48ms | 42.07ms |
-| BobuSumisu-ac | 201.9µs | 1.77ms | 12.74ms | 267.19ms |
-| BobuSumisu-go-ac | 347.9µs | 9.37ms | 511.59ms | 33.478s |
-| anknown | 212.8µs | 944.2µs | 20.74ms | 162.95ms |
-| sepetrov | 54.0µs | 589.6µs | 5.74ms | 76.19ms |
-| cloudflare | 573.4µs | 5.15ms | 66.21ms | 1.012s |
-| petar-dambovaliev | 88.4µs | 789.1µs | 8.74ms | 204.62ms |
-| iohub | 53.8µs | 519.8µs | 5.01ms | 62.04ms |
-| ClarkThan | 44.0µs | 472.2µs | 4.63ms | 68.29ms |
-| pgavlin | 87.2µs | 776.5µs | 10.45ms | 202.21ms |
-| gnames | 114.9µs | 1.16ms | 12.29ms | 169.97ms |
+| china-tjj | 21.1µs | 217.2µs | 2.54ms | 31.70ms |
+| china-tjj(SL) | 21.4µs | 240.5µs | 2.63ms | 32.46ms |
+| china-tjj(U64) | 22.9µs | 257.6µs | 2.90ms | 34.11ms |
+| china-tjj(SL+U64) | 23.5µs | 234.1µs | 2.96ms | 34.25ms |
+| BobuSumisu-ac | 210.1µs | 1.73ms | 11.99ms | 278.18ms |
+| BobuSumisu-go-ac | 354.2µs | 9.00ms | 492.94ms | 32.456s |
+| anknown | 223.7µs | 870.3µs | 17.41ms | 157.74ms |
+| sepetrov | 54.9µs | 592.6µs | 5.49ms | 68.24ms |
+| cloudflare | 605.1µs | 5.03ms | 57.30ms | 801.26ms |
+| petar-dambovaliev | 90.3µs | 775.2µs | 8.67ms | 205.25ms |
+| iohub | 54.5µs | 496.4µs | 4.70ms | 55.61ms |
+| ClarkThan | 44.9µs | 458.4µs | 4.37ms | 69.10ms |
+| pgavlin | 86.5µs | 751.8µs | 8.27ms | 199.53ms |
+| gnames | 116.1µs | 1.11ms | 11.77ms | 163.79ms |
 
 ### 建树内存申请量
 
@@ -112,29 +112,29 @@
 
 | Library | 100 | 1,000 | 10,000 | 100,000 |
 |---|---|---|---|---|
-| china-tjj | 11.5KB | 105.4KB | 992.3KB | 14.34MB |
-| china-tjj(SL) | 12.0KB | 110.6KB | 1.02MB | 15.03MB |
-| china-tjj(U64) | 34.1KB | 324.1KB | 2.96MB | 26.63MB |
-| china-tjj(SL+U64) | 36.1KB | 344.1KB | 3.14MB | 28.02MB |
+| china-tjj | 10.1KB | 93.4KB | 872.4KB | 12.06MB |
+| china-tjj(SL) | 10.6KB | 98.6KB | 920.3KB | 12.76MB |
+| china-tjj(U64) | 29.4KB | 276.1KB | 2.50MB | 22.08MB |
+| china-tjj(SL+U64) | 31.4KB | 296.1KB | 2.68MB | 23.47MB |
 | BobuSumisu-ac | 1.50MB | 13.51MB | 125.22MB | 1.007GB |
 | BobuSumisu-go-ac | 60.9KB | 727.3KB | 8.92MB | 73.78MB |
 | anknown | 2.66MB | 3.56MB | 16.66MB | 110.84MB |
-| sepetrov | 58.8KB | 599.1KB | 5.11MB | 36.97MB |
+| sepetrov | 58.8KB | 599.1KB | 5.11MB | 36.95MB |
 | cloudflare | 3.26MB | 32.12MB | 320.84MB | 3.132GB |
-| petar-dambovaliev | 226.7KB | 2.21MB | 22.75MB | 229.36MB |
+| petar-dambovaliev | 226.7KB | 2.21MB | 22.75MB | 229.49MB |
 | iohub | 125.6KB | 1.12MB | 9.65MB | 78.90MB |
 | ClarkThan | 45.8KB | 437.3KB | 3.84MB | 29.39MB |
-| pgavlin | 225.5KB | 2.20MB | 22.63MB | 228.28MB |
+| pgavlin | 225.5KB | 2.20MB | 22.63MB | 228.26MB |
 | gnames | 190.9KB | 1.71MB | 16.69MB | 138.67MB |
 
 #### 纯英文
 
 | Library | 100 | 1,000 | 10,000 | 100,000 |
 |---|---|---|---|---|
-| china-tjj | 19.4KB | 181.0KB | 1.58MB | 27.05MB |
-| china-tjj(SL) | 20.4KB | 190.2KB | 1.65MB | 28.15MB |
-| china-tjj(U64) | 62.1KB | 571.5KB | 5.05MB | 50.30MB |
-| china-tjj(SL+U64) | 66.1KB | 611.5KB | 5.32MB | 52.48MB |
+| china-tjj | 15.9KB | 145.0KB | 1.27MB | 20.55MB |
+| china-tjj(SL) | 16.9KB | 154.2KB | 1.34MB | 21.65MB |
+| china-tjj(U64) | 47.8KB | 443.5KB | 3.80MB | 37.30MB |
+| china-tjj(SL+U64) | 51.8KB | 483.5KB | 4.07MB | 39.49MB |
 | BobuSumisu-ac | 1.13MB | 9.31MB | 76.54MB | 637.44MB |
 | BobuSumisu-go-ac | 57.1KB | 493.9KB | 5.27MB | 46.46MB |
 | anknown | 192.2KB | 1.70MB | 17.80MB | 192.22MB |
@@ -150,14 +150,14 @@
 
 | Library | 100 | 1,000 | 10,000 | 100,000 |
 |---|---|---|---|---|
-| china-tjj | 15.8KB | 153.3KB | 1.32MB | 19.81MB |
-| china-tjj(SL) | 16.5KB | 161.3KB | 1.39MB | 20.75MB |
-| china-tjj(U64) | 47.0KB | 470.4KB | 4.06MB | 36.82MB |
-| china-tjj(SL+U64) | 50.0KB | 498.4KB | 4.29MB | 38.69MB |
+| china-tjj | 13.5KB | 130.7KB | 1.11MB | 15.55MB |
+| china-tjj(SL) | 14.3KB | 138.7KB | 1.18MB | 16.49MB |
+| china-tjj(U64) | 38.7KB | 382.4KB | 3.23MB | 28.31MB |
+| china-tjj(SL+U64) | 41.7KB | 410.4KB | 3.46MB | 30.18MB |
 | BobuSumisu-ac | 1.37MB | 12.12MB | 104.87MB | 891.76MB |
 | BobuSumisu-go-ac | 61.5KB | 704.0KB | 6.98MB | 60.00MB |
 | anknown | 2.00MB | 4.15MB | 15.01MB | 144.72MB |
-| sepetrov | 95.0KB | 948.0KB | 7.52MB | 55.58MB |
+| sepetrov | 95.0KB | 948.0KB | 7.52MB | 55.57MB |
 | cloudflare | 2.89MB | 28.25MB | 281.57MB | 2.801GB |
 | petar-dambovaliev | 252.0KB | 1.82MB | 18.89MB | 184.45MB |
 | iohub | 121.4KB | 1.07MB | 8.95MB | 73.92MB |
@@ -171,57 +171,57 @@
 
 | Library | 100 | 1,000 | 10,000 | 100,000 |
 |---|---|---|---|---|
-| china-tjj | 3.8KB | 34.7KB | 370.5KB | 4.40MB |
-| china-tjj(SL) | 4.1KB | 39.9KB | 418.6KB | 5.10MB |
-| china-tjj(U64) | 11.1KB | 106.3KB | 1.04MB | 8.13MB |
-| china-tjj(SL+U64) | 13.1KB | 126.5KB | 1.22MB | 9.52MB |
-| BobuSumisu-ac | 1.34MB | 12.00MB | 110.61MB | 914.27MB |
+| china-tjj | 3.7KB | 34.8KB | 370.5KB | 4.40MB |
+| china-tjj(SL) | 4.2KB | 39.9KB | 418.5KB | 5.10MB |
+| china-tjj(U64) | 16.4KB | 106.4KB | 1.04MB | 8.13MB |
+| china-tjj(SL+U64) | 13.4KB | 126.2KB | 1.22MB | 9.52MB |
+| BobuSumisu-ac | 1.33MB | 12.00MB | 110.61MB | 914.27MB |
 | BobuSumisu-go-ac | 32.8KB | 280.1KB | 2.53MB | 19.40MB |
-| anknown | 1.42MB | 1.58MB | 3.76MB | 17.24MB |
-| sepetrov | 44.3KB | 425.8KB | 3.77MB | 26.35MB |
+| anknown | 1.43MB | 1.58MB | 3.76MB | 17.24MB |
+| sepetrov | 38.9KB | 425.5KB | 3.77MB | 26.35MB |
 | cloudflare | 3.23MB | 31.77MB | 317.17MB | 3.097GB |
-| petar-dambovaliev | 96.5KB | 667.1KB | 5.60MB | 50.38MB |
-| iohub | 52.6KB | 428.1KB | 3.33MB | 26.60MB |
-| ClarkThan | 41.5KB | 398.9KB | 3.54MB | 25.26MB |
-| pgavlin | 102.9KB | 661.6KB | 5.60MB | 50.38MB |
-| gnames | 157.5KB | 1.37MB | 12.53MB | 100.12MB |
+| petar-dambovaliev | 102.5KB | 655.7KB | 5.60MB | 50.38MB |
+| iohub | 52.7KB | 428.1KB | 3.33MB | 26.60MB |
+| ClarkThan | 41.7KB | 398.5KB | 3.54MB | 25.26MB |
+| pgavlin | 102.6KB | 661.5KB | 5.60MB | 50.38MB |
+| gnames | 157.8KB | 1.37MB | 12.53MB | 100.12MB |
 
 #### 纯英文
 
 | Library | 100 | 1,000 | 10,000 | 100,000 |
 |---|---|---|---|---|
-| china-tjj | 6.7KB | 58.9KB | 456.2KB | 6.23MB |
-| china-tjj(SL) | 7.6KB | 68.0KB | 528.2KB | 7.33MB |
-| china-tjj(U64) | 20.1KB | 186.3KB | 1.34MB | 11.37MB |
-| china-tjj(SL+U64) | 24.1KB | 226.2KB | 1.61MB | 13.55MB |
-| BobuSumisu-ac | 1.01MB | 8.27MB | 68.02MB | 567.08MB |
+| china-tjj | 6.6KB | 58.7KB | 456.2KB | 6.23MB |
+| china-tjj(SL) | 7.9KB | 67.9KB | 528.4KB | 7.33MB |
+| china-tjj(U64) | 20.0KB | 186.3KB | 1.34MB | 11.37MB |
+| china-tjj(SL+U64) | 24.1KB | 231.5KB | 1.61MB | 13.55MB |
+| BobuSumisu-ac | 1.01MB | 8.25MB | 68.02MB | 567.08MB |
 | BobuSumisu-go-ac | 29.5KB | 200.1KB | 1.55MB | 12.33MB |
-| anknown | 38.3KB | 293.6KB | 3.18MB | 42.24MB |
-| sepetrov | 102.0KB | 816.5KB | 6.42MB | 51.95MB |
-| cloudflare | 2.45MB | 23.83MB | 243.72MB | 2.465GB |
-| petar-dambovaliev | 95.8KB | 462.9KB | 3.76MB | 33.27MB |
-| iohub | 52.4KB | 428.3KB | 3.33MB | 26.60MB |
-| ClarkThan | 93.0KB | 748.8KB | 5.90MB | 47.83MB |
-| pgavlin | 95.8KB | 462.7KB | 3.76MB | 33.27MB |
-| gnames | 114.3KB | 955.7KB | 7.47MB | 60.81MB |
+| anknown | 38.0KB | 293.6KB | 3.18MB | 42.25MB |
+| sepetrov | 102.0KB | 816.4KB | 6.42MB | 51.95MB |
+| cloudflare | 2.46MB | 23.84MB | 243.72MB | 2.465GB |
+| petar-dambovaliev | 95.7KB | 462.9KB | 3.76MB | 33.27MB |
+| iohub | 52.5KB | 428.3KB | 3.33MB | 26.60MB |
+| ClarkThan | 93.2KB | 749.1KB | 5.90MB | 47.83MB |
+| pgavlin | 95.9KB | 463.1KB | 3.76MB | 33.27MB |
+| gnames | 114.3KB | 955.9KB | 7.47MB | 60.80MB |
 
 #### 中英混合
 
 | Library | 100 | 1,000 | 10,000 | 100,000 |
 |---|---|---|---|---|
-| china-tjj | 5.4KB | 48.3KB | 458.5KB | 5.48MB |
+| china-tjj | 5.2KB | 48.2KB | 458.5KB | 5.48MB |
 | china-tjj(SL) | 5.8KB | 56.2KB | 522.5KB | 6.42MB |
-| china-tjj(U64) | 15.5KB | 142.3KB | 1.30MB | 10.06MB |
-| china-tjj(SL+U64) | 18.7KB | 170.4KB | 1.53MB | 11.93MB |
+| china-tjj(U64) | 15.4KB | 142.4KB | 1.30MB | 10.06MB |
+| china-tjj(SL+U64) | 18.4KB | 164.3KB | 1.53MB | 11.93MB |
 | BobuSumisu-ac | 1.22MB | 10.77MB | 92.91MB | 788.88MB |
-| BobuSumisu-go-ac | 32.1KB | 264.1KB | 2.03MB | 15.98MB |
+| BobuSumisu-go-ac | 32.0KB | 264.1KB | 2.03MB | 15.98MB |
 | anknown | 1.18MB | 1.59MB | 2.94MB | 26.16MB |
-| sepetrov | 72.7KB | 678.8KB | 5.45MB | 41.17MB |
+| sepetrov | 72.8KB | 678.7KB | 5.45MB | 41.17MB |
 | cloudflare | 2.85MB | 27.94MB | 278.34MB | 2.770GB |
-| petar-dambovaliev | 129.7KB | 591.6KB | 4.66MB | 43.58MB |
-| iohub | 46.8KB | 428.1KB | 3.32MB | 26.60MB |
-| ClarkThan | 67.2KB | 627.2KB | 5.05MB | 38.35MB |
-| pgavlin | 129.8KB | 591.4KB | 4.66MB | 43.58MB |
+| petar-dambovaliev | 129.8KB | 591.7KB | 4.66MB | 43.58MB |
+| iohub | 52.8KB | 428.1KB | 3.33MB | 26.60MB |
+| ClarkThan | 66.8KB | 627.0KB | 5.05MB | 38.35MB |
+| pgavlin | 129.7KB | 591.8KB | 4.66MB | 43.58MB |
 | gnames | 142.8KB | 1.22MB | 10.41MB | 86.71MB |
 
 ### 匹配耗时
@@ -230,55 +230,55 @@
 
 | Library | 100 | 1,000 | 10,000 | 100,000 |
 |---|---|---|---|---|
-| china-tjj | 1.09ms | 1.41ms | 994.3µs | 1.59ms |
-| china-tjj(SL) | 942.7µs | 1.36ms | 939.2µs | 1.56ms |
-| china-tjj(U64) | 1.06ms | 1.29ms | 1.08ms | 1.86ms |
-| china-tjj(SL+U64) | 892.9µs | 1.25ms | 1.02ms | 1.69ms |
-| BobuSumisu-ac | 411.4µs | 492.0µs | 812.8µs | 3.54ms |
-| BobuSumisu-go-ac | 509.9µs | 560.6µs | 820.8µs | 1.49ms |
-| anknown | 464.5µs | 468.6µs | 667.9µs | 1.05ms |
-| sepetrov | 561.5µs | 854.0µs | 1.34ms | 2.36ms |
-| cloudflare | 309.4µs | 662.7µs | 1.59ms | 7.48ms |
-| petar-dambovaliev | 1.23ms | 1.66ms | 2.44ms | 8.60ms |
-| iohub | 570.4µs | 648.3µs | 1.00ms | 1.79ms |
-| ClarkThan | 637.0µs | 941.6µs | 1.30ms | 2.23ms |
-| pgavlin | 1.22ms | 1.60ms | 2.65ms | 8.54ms |
-| gnames | 2.15ms | 2.51ms | 3.57ms | 11.17ms |
+| china-tjj | 909.6µs | 1.34ms | 902.8µs | 1.41ms |
+| china-tjj(SL) | 899.1µs | 1.32ms | 877.0µs | 1.40ms |
+| china-tjj(U64) | 841.2µs | 1.24ms | 987.1µs | 1.51ms |
+| china-tjj(SL+U64) | 838.4µs | 1.17ms | 990.2µs | 1.67ms |
+| BobuSumisu-ac | 389.0µs | 447.3µs | 692.5µs | 3.10ms |
+| BobuSumisu-go-ac | 495.8µs | 542.3µs | 744.4µs | 1.18ms |
+| anknown | 443.6µs | 474.6µs | 653.0µs | 995.7µs |
+| sepetrov | 564.9µs | 802.9µs | 1.26ms | 2.03ms |
+| cloudflare | 288.6µs | 589.4µs | 1.15ms | 5.55ms |
+| petar-dambovaliev | 1.18ms | 1.51ms | 2.25ms | 5.00ms |
+| iohub | 526.8µs | 651.3µs | 889.3µs | 1.43ms |
+| ClarkThan | 632.8µs | 765.9µs | 1.19ms | 2.32ms |
+| pgavlin | 1.21ms | 1.50ms | 2.22ms | 12.75ms |
+| gnames | 2.10ms | 2.38ms | 3.10ms | 8.33ms |
 
 #### 纯英文
 
 | Library | 100 | 1,000 | 10,000 | 100,000 |
 |---|---|---|---|---|
-| china-tjj | 2.36ms | 2.92ms | 4.02ms | 6.41ms |
-| china-tjj(SL) | 2.03ms | 2.47ms | 3.60ms | 5.95ms |
-| china-tjj(U64) | 2.22ms | 2.75ms | 4.02ms | 6.95ms |
-| china-tjj(SL+U64) | 1.87ms | 2.31ms | 3.62ms | 6.82ms |
-| BobuSumisu-ac | 491.1µs | 792.1µs | 1.87ms | 6.13ms |
-| BobuSumisu-go-ac | 621.3µs | 727.5µs | 1.62ms | 3.61ms |
-| anknown | 1.51ms | 1.36ms | 2.43ms | 8.37ms |
-| sepetrov | 2.15ms | 3.02ms | 5.42ms | 15.09ms |
-| cloudflare | 424.3µs | 806.2µs | 1.76ms | 7.93ms |
-| petar-dambovaliev | 1.51ms | 2.23ms | 4.45ms | 7.32ms |
-| iohub | 785.8µs | 1.10ms | 2.58ms | 7.11ms |
-| ClarkThan | 2.03ms | 2.77ms | 4.55ms | 11.98ms |
-| pgavlin | 1.52ms | 2.20ms | 4.47ms | 6.18ms |
-| gnames | 2.36ms | 3.15ms | 6.32ms | 18.81ms |
+| china-tjj | 2.16ms | 2.81ms | 3.78ms | 5.49ms |
+| china-tjj(SL) | 1.92ms | 2.31ms | 3.37ms | 5.57ms |
+| china-tjj(U64) | 1.92ms | 2.44ms | 3.53ms | 5.73ms |
+| china-tjj(SL+U64) | 1.74ms | 2.21ms | 3.35ms | 5.59ms |
+| BobuSumisu-ac | 465.9µs | 715.6µs | 1.84ms | 5.12ms |
+| BobuSumisu-go-ac | 558.2µs | 721.6µs | 1.50ms | 3.28ms |
+| anknown | 1.68ms | 1.36ms | 2.45ms | 6.34ms |
+| sepetrov | 2.05ms | 2.72ms | 5.23ms | 13.32ms |
+| cloudflare | 392.9µs | 747.0µs | 3.33ms | 4.24ms |
+| petar-dambovaliev | 1.48ms | 2.13ms | 4.66ms | 5.80ms |
+| iohub | 835.5µs | 1.03ms | 2.56ms | 5.37ms |
+| ClarkThan | 2.00ms | 2.53ms | 4.65ms | 9.02ms |
+| pgavlin | 1.45ms | 2.13ms | 4.23ms | 5.70ms |
+| gnames | 2.41ms | 3.00ms | 6.47ms | 17.66ms |
 
 #### 中英混合
 
 | Library | 100 | 1,000 | 10,000 | 100,000 |
 |---|---|---|---|---|
-| china-tjj | 1.47ms | 2.02ms | 1.66ms | 2.65ms |
-| china-tjj(SL) | 1.44ms | 1.80ms | 1.50ms | 2.51ms |
-| china-tjj(U64) | 1.34ms | 1.80ms | 1.72ms | 2.91ms |
-| china-tjj(SL+U64) | 1.25ms | 1.66ms | 1.52ms | 2.85ms |
-| BobuSumisu-ac | 485.6µs | 593.8µs | 1.01ms | 2.88ms |
-| BobuSumisu-go-ac | 587.3µs | 670.4µs | 952.8µs | 1.82ms |
-| anknown | 887.0µs | 881.5µs | 1.34ms | 2.41ms |
-| sepetrov | 954.9µs | 1.39ms | 2.37ms | 5.81ms |
-| cloudflare | 391.7µs | 872.2µs | 1.85ms | 6.78ms |
-| petar-dambovaliev | 1.43ms | 1.96ms | 3.01ms | 5.88ms |
-| iohub | 621.5µs | 807.9µs | 1.32ms | 3.07ms |
-| ClarkThan | 1.27ms | 1.65ms | 2.39ms | 5.80ms |
-| pgavlin | 1.40ms | 2.00ms | 2.88ms | 6.55ms |
-| gnames | 2.62ms | 2.91ms | 4.27ms | 10.32ms |
+| china-tjj | 1.46ms | 2.00ms | 1.47ms | 2.15ms |
+| china-tjj(SL) | 1.34ms | 1.75ms | 1.29ms | 2.04ms |
+| china-tjj(U64) | 1.25ms | 1.67ms | 1.45ms | 2.22ms |
+| china-tjj(SL+U64) | 1.21ms | 1.54ms | 1.37ms | 2.29ms |
+| BobuSumisu-ac | 465.5µs | 555.2µs | 843.6µs | 2.20ms |
+| BobuSumisu-go-ac | 595.4µs | 631.1µs | 905.1µs | 1.93ms |
+| anknown | 895.2µs | 875.3µs | 1.31ms | 2.14ms |
+| sepetrov | 943.0µs | 1.32ms | 2.49ms | 5.02ms |
+| cloudflare | 372.4µs | 698.1µs | 1.29ms | 5.73ms |
+| petar-dambovaliev | 1.46ms | 1.86ms | 2.73ms | 4.87ms |
+| iohub | 598.7µs | 937.0µs | 1.17ms | 2.66ms |
+| ClarkThan | 1.27ms | 1.57ms | 2.27ms | 4.92ms |
+| pgavlin | 1.47ms | 1.86ms | 2.67ms | 5.17ms |
+| gnames | 2.43ms | 2.84ms | 3.99ms | 9.82ms |
