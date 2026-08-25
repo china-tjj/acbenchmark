@@ -2,17 +2,19 @@ module acbenchmark
 
 go 1.23.2
 
-// replace github.com/china-tjj/ahocorasick => ../ahocorasick
+replace github.com/china-tjj/ahocorasick => ../ahocorasick
 
 require (
 	github.com/BobuSumisu/aho-corasick v1.0.3
 	github.com/BobuSumisu/go-ahocorasick v0.0.0-20190713155435-9d454b2085de
 	github.com/ClarkThan/ahocorasick v0.1.2
+	github.com/TheFutureIsOurs/ahocorasick v0.0.0-20210127025413-575fb905ba8d
 	github.com/anknown/ahocorasick v0.0.0-20190904063843-d75dbd5169c0
 	github.com/china-tjj/ahocorasick v1.0.0
 	github.com/cloudflare/ahocorasick v0.0.0-20240916140611-054963ec9396
 	github.com/gnames/aho_corasick v0.1.5
 	github.com/iohub/ahocorasick v0.0.0-20240118134817-7d0e3abf6181
+	github.com/orbit-w/aho_corasick v0.0.0-20240317075107-47e840b31688
 	github.com/petar-dambovaliev/aho-corasick v0.0.0-20250424160509-463d218d4745
 	github.com/pgavlin/aho-corasick v0.5.1
 	github.com/sepetrov/ahocorasick v0.1.0

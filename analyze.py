@@ -220,29 +220,34 @@ def make_tables(rows, out_path, chart_files):
     lines.append("| 库 | Benchmark 名 | 说明 |")
     lines.append("|---|---|---|")
     lines.append(
-        "| [china-tjj/ahocorasick](https://github.com/china-tjj/ahocorasick) | china-tjj | 紧凑 Trie，三级索引（线性/二分/哈希），自动选择最小 uint 类型 |")
-    lines.append("| 同上 | china-tjj(SL) | 同上 + 构建后缀链接（加速匹配，额外 O(N) 空间） |")
-    lines.append("| 同上 | china-tjj(U64) | 同上，手动指定 uint64 索引（与其他库同一维度对比） |")
-    lines.append("| 同上 | china-tjj(SL+U64) | 后缀链接 + uint64 索引 |")
+        "| [china-tjj/ahocorasick](https://github.com/china-tjj/ahocorasick) | china-tjj | 紧凑 Trie，完整命中结果，结果附带 term 索引，自动选择最小 uint 类型 |")
+    lines.append("| 同上 | china-tjj(SL) | 同上 + 后缀链接 |")
+    lines.append("| 同上 | china-tjj(U64) | 同上 + 手动指定 uint64 |")
+    lines.append("| 同上 | china-tjj(SL+U64) | 同上 + 后缀链接 + 手动指定 uint64 |")
     lines.append(
-        "| [BobuSumisu/aho-corasick](https://github.com/BobuSumisu/aho-corasick) | BobuSumisu-ac | DFA 矩阵实现，构建快，int 索引 |")
+        "| [BobuSumisu/aho-corasick](https://github.com/BobuSumisu/aho-corasick) | BobuSumisu-ac | DFA 矩阵，完整命中结果，int 索引，构建较快 |")
     lines.append(
-        "| [BobuSumisu/go-ahocorasick](https://github.com/BobuSumisu/go-ahocorasick) | BobuSumisu-go-ac | 双数组 Trie，作者旧版实现 |")
+        "| [BobuSumisu/go-ahocorasick](https://github.com/BobuSumisu/go-ahocorasick) | BobuSumisu-go-ac | 双数组 Trie，完整命中结果，作者旧版实现 |")
     lines.append(
-        "| [anknown/ahocorasick](https://github.com/anknown/ahocorasick) | anknown | 双数组 Trie，int 索引，内存占用低 |")
+        "| [anknown/ahocorasick](https://github.com/anknown/ahocorasick) | anknown | 双数组 Trie，完整命中结果，int 索引 |")
     lines.append(
-        "| [sepetrov/ahocorasick](https://github.com/sepetrov/ahocorasick) | sepetrov | 标准 Trie，map 存储子节点 |")
+        "| [TheFutureIsOurs/ahocorasick](https://github.com/TheFutureIsOurs/ahocorasick) | TheFutureIsOurs | 双数组 Trie，不完整命中结果，同终点仅保留最长 term |")
     lines.append(
-        "| [cloudflare/ahocorasick](https://github.com/cloudflare/ahocorasick) | cloudflare | 标准 Trie，[]byte 匹配，int 索引 |")
+        "| [orbit-w/aho_corasick](https://github.com/orbit-w/aho_corasick) | orbit-w | 双数组 Trie，完整命中结果，保留全部后缀命中 |")
     lines.append(
-        "| [petar-dambovaliev/aho-corasick](https://github.com/petar-dambovaliev/aho-corasick) | petar-dambovaliev | 移植自 Rust BurntSushi 库，NFA 模式 |")
-    lines.append("| [iohub/ahocorasick](https://github.com/iohub/ahocorasick) | iohub | cedar 双数组实现 |")
+        "| [sepetrov/ahocorasick](https://github.com/sepetrov/ahocorasick) | sepetrov | 标准 Trie，完整命中结果，map 存储子节点 |")
     lines.append(
-        "| [ClarkThan/ahocorasick](https://github.com/ClarkThan/ahocorasick) | ClarkThan | 标准 Trie，map[rune]*Node |")
+        "| [cloudflare/ahocorasick](https://github.com/cloudflare/ahocorasick) | cloudflare | 标准 Trie，完整命中结果，byte 级匹配，int 索引 |")
     lines.append(
-        "| [pgavlin/aho-corasick](https://github.com/pgavlin/aho-corasick) | pgavlin | 源自 petar-dambovaliev，支持 NFA/DFA 切换 |")
+        "| [petar-dambovaliev/aho-corasick](https://github.com/petar-dambovaliev/aho-corasick) | petar-dambovaliev | NFA，完整命中结果，移植自 Rust aho-corasick |")
     lines.append(
-        "| [gnames/aho_corasick](https://github.com/gnames/aho_corasick) | gnames | 标准 Trie，字节级匹配，含后缀链接 |")
+        "| [iohub/ahocorasick](https://github.com/iohub/ahocorasick) | iohub | cedar 双数组，完整命中结果，byte 级匹配 |")
+    lines.append(
+        "| [ClarkThan/ahocorasick](https://github.com/ClarkThan/ahocorasick) | ClarkThan | 标准 Trie，完整命中结果，map[rune]*Node |")
+    lines.append(
+        "| [pgavlin/aho-corasick](https://github.com/pgavlin/aho-corasick) | pgavlin | NFA/DFA，完整命中结果，源自 petar-dambovaliev |")
+    lines.append(
+        "| [gnames/aho_corasick](https://github.com/gnames/aho_corasick) | gnames | 标准 Trie，完整命中结果，byte 级匹配，含后缀链接 |")
     lines.append("")
 
     # ── images first ──

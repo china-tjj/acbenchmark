@@ -13,11 +13,13 @@ import (
 	bobuac "github.com/BobuSumisu/aho-corasick"
 	bobugoac "github.com/BobuSumisu/go-ahocorasick"
 	clarkthanac "github.com/ClarkThan/ahocorasick"
+	thefutureisoursac "github.com/TheFutureIsOurs/ahocorasick"
 	anknownac "github.com/anknown/ahocorasick"
 	"github.com/china-tjj/ahocorasick"
 	cloudflareac "github.com/cloudflare/ahocorasick"
 	gnamesac "github.com/gnames/aho_corasick"
 	iohubac "github.com/iohub/ahocorasick"
+	orbitwac "github.com/orbit-w/aho_corasick"
 	petarac "github.com/petar-dambovaliev/aho-corasick"
 	pgavlinac "github.com/pgavlin/aho-corasick"
 	sepetrovac "github.com/sepetrov/ahocorasick"
@@ -72,6 +74,30 @@ var libs = []lib{
 		return func() { m.Build(rp) },
 			func() int { return len(m.MultiPatternSearch(rt, false)) },
 			func() { m = anknownac.Machine{} }
+	}},
+	{"TheFutureIsOurs", func(p []string, t string) (func(), func() int, func()) {
+		var ac *thefutureisoursac.Ac
+		rt := []rune(t)
+		return func() {
+				built, err := thefutureisoursac.Build(p)
+				if err != nil {
+					panic(err)
+				}
+				ac = built
+			},
+			func() int { return len(ac.MultiPatternSearch(rt)) },
+			func() { ac = nil }
+	}},
+	{"orbit-w", func(p []string, t string) (func(), func() int, func()) {
+		kp := make(orbitwac.StrKeySlice, len(p))
+		for i, s := range p {
+			kp[i] = orbitwac.StrKey([]rune(s))
+		}
+		rt := []rune(t)
+		var ac orbitwac.IAhoCorasick
+		return func() { ac = orbitwac.New(kp) },
+			func() int { return len(ac.FindAll(rt)) },
+			func() { ac = nil }
 	}},
 	{"sepetrov", func(p []string, t string) (func(), func() int, func()) {
 		var trie sepetrovac.Trie
