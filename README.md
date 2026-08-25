@@ -10,7 +10,7 @@
 
 | 库 | Benchmark 名 | 说明 |
 |---|---|---|
-| [china-tjj/acautomaton](https://github.com/china-tjj/acautomaton) | china-tjj | 紧凑 Trie，三级索引（线性/二分/哈希），自动选择最小 uint 类型 |
+| [china-tjj/ahocorasick](https://github.com/china-tjj/ahocorasick) | china-tjj | 紧凑 Trie，三级索引（线性/二分/哈希），自动选择最小 uint 类型 |
 | 同上 | china-tjj(SL) | 同上 + 构建后缀链接（加速匹配，额外 O(N) 空间） |
 | 同上 | china-tjj(U64) | 同上，手动指定 uint64 索引（与其他库同一维度对比） |
 | 同上 | china-tjj(SL+U64) | 后缀链接 + uint64 索引 |

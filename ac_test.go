@@ -10,12 +10,11 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/china-tjj/acautomaton"
-
 	bobuac "github.com/BobuSumisu/aho-corasick"
 	bobugoac "github.com/BobuSumisu/go-ahocorasick"
 	clarkthanac "github.com/ClarkThan/ahocorasick"
 	anknownac "github.com/anknown/ahocorasick"
+	"github.com/china-tjj/ahocorasick"
 	cloudflareac "github.com/cloudflare/ahocorasick"
 	gnamesac "github.com/gnames/aho_corasick"
 	iohubac "github.com/iohub/ahocorasick"
@@ -34,10 +33,10 @@ type lib struct {
 	setup func(patterns []string, text string) (build func(), match func() int, reset func())
 }
 
-func chinaTJJSetup(opts ...acautomaton.Option) func([]string, string) (func(), func() int, func()) {
+func chinaTJJSetup(opts ...ahocorasick.Option) func([]string, string) (func(), func() int, func()) {
 	return func(p []string, t string) (func(), func() int, func()) {
-		var ac acautomaton.IAcAutomaton
-		return func() { ac = acautomaton.NewAcAutomaton(p, opts...) },
+		var ac ahocorasick.IAcAutomaton
+		return func() { ac = ahocorasick.NewAcAutomaton(p, opts...) },
 			func() int { return len(ac.MatchAll(t)) },
 			func() { ac = nil }
 	}
@@ -46,9 +45,9 @@ func chinaTJJSetup(opts ...acautomaton.Option) func([]string, string) (func(), f
 var libs = []lib{
 	// ── china-tjj variants ──
 	{"china-tjj", chinaTJJSetup()},
-	{"china-tjj(SL)", chinaTJJSetup(acautomaton.WithOutputLink(true))},
-	{"china-tjj(U64)", chinaTJJSetup(acautomaton.WithDType(acautomaton.DTypeUint64))},
-	{"china-tjj(SL+U64)", chinaTJJSetup(acautomaton.WithOutputLink(true), acautomaton.WithDType(acautomaton.DTypeUint64))},
+	{"china-tjj(SL)", chinaTJJSetup(ahocorasick.WithOutputLink())},
+	{"china-tjj(U64)", chinaTJJSetup(ahocorasick.WithDType(ahocorasick.DTypeUint64))},
+	{"china-tjj(SL+U64)", chinaTJJSetup(ahocorasick.WithOutputLink(), ahocorasick.WithDType(ahocorasick.DTypeUint64))},
 
 	// ── other libraries ──
 	{"BobuSumisu-ac", func(p []string, t string) (func(), func() int, func()) {
