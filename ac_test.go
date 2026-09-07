@@ -15,7 +15,7 @@ import (
 	clarkthanac "github.com/ClarkThan/ahocorasick"
 	thefutureisoursac "github.com/TheFutureIsOurs/ahocorasick"
 	anknownac "github.com/anknown/ahocorasick"
-	"github.com/china-tjj/ahocorasick"
+	tjjac "github.com/china-tjj/ahocorasick"
 	cloudflareac "github.com/cloudflare/ahocorasick"
 	gnamesac "github.com/gnames/aho_corasick"
 	iohubac "github.com/iohub/ahocorasick"
@@ -35,21 +35,27 @@ type lib struct {
 	setup func(patterns []string, text string) (build func(), match func() int, reset func())
 }
 
-func chinaTJJSetup(opts ...ahocorasick.Option) func([]string, string) (func(), func() int, func()) {
+func chinaTJJSetup(opts ...tjjac.Option) func([]string, string) (func(), func() int, func()) {
 	return func(p []string, t string) (func(), func() int, func()) {
-		var ac ahocorasick.IAcAutomaton
-		return func() { ac = ahocorasick.NewAcAutomaton(p, opts...) },
+		var ac tjjac.IAcAutomaton
+		return func() { ac = tjjac.NewAcAutomaton(p, opts...) },
 			func() int { return len(ac.MatchAll(t)) },
 			func() { ac = nil }
 	}
 }
 
+//func init() {
+//	libs = libs[:6]
+//}
+
 var libs = []lib{
 	// ── china-tjj variants ──
 	{"china-tjj", chinaTJJSetup()},
-	{"china-tjj(SL)", chinaTJJSetup(ahocorasick.WithOutputLink())},
-	{"china-tjj(U64)", chinaTJJSetup(ahocorasick.WithDType(ahocorasick.DTypeUint64))},
-	{"china-tjj(SL+U64)", chinaTJJSetup(ahocorasick.WithOutputLink(), ahocorasick.WithDType(ahocorasick.DTypeUint64))},
+	{"china-tjj(FB)", chinaTJJSetup(tjjac.WithFastBuild())},
+	{"china-tjj(U64)", chinaTJJSetup(tjjac.WithDType(tjjac.DTypeUint64))},
+	{"china-tjj(U64+OL)", chinaTJJSetup(tjjac.WithDType(tjjac.DTypeUint64), tjjac.WithOutputLink())},
+	{"china-tjj(U64+TI)", chinaTJJSetup(tjjac.WithDType(tjjac.DTypeUint64), tjjac.WithTermIdx())},
+	{"china-tjj(U64+OL+TI)", chinaTJJSetup(tjjac.WithDType(tjjac.DTypeUint64), tjjac.WithOutputLink(), tjjac.WithTermIdx())},
 
 	// ── other libraries ──
 	{"BobuSumisu-ac", func(p []string, t string) (func(), func() int, func()) {
@@ -336,6 +342,7 @@ func testCases() []testCase {
 // retained 通过 reset→GC→baseline 差值获得，无需额外构建。
 
 func Benchmark(b *testing.B) {
+	n := runtime.GOMAXPROCS(-1)
 	for _, tc := range testCases() {
 		for _, l := range libs {
 			tc, l := tc, l
@@ -343,39 +350,35 @@ func Benchmark(b *testing.B) {
 
 			// ── Build ──
 			b.Run("Build/"+l.name+"/"+tc.name, func(b *testing.B) {
-				// 清除上一轮 calibration 残留，测量 baseline
-				resetFn()
-				runtime.GC()
-				debug.FreeOSMemory()
-				runtime.GC()
-				var m1 runtime.MemStats
-				runtime.ReadMemStats(&m1)
-
-				b.ReportAllocs()
 				b.ResetTimer()
 				for i := 0; i < b.N; i++ {
 					buildFn()
 				}
-
-				// 测量 retained：GC 后只有最后一次 build 的产物存活
-				b.StopTimer()
-				runtime.GC()
-				debug.FreeOSMemory()
-				runtime.GC()
-				var m2 runtime.MemStats
-				runtime.ReadMemStats(&m2)
-				if d := int64(m2.HeapAlloc) - int64(m1.HeapAlloc); d > 0 {
-					b.ReportMetric(float64(d), "retained-B")
-				}
 			})
 
-			// ── Match ── 直接复用 Build 最后一次的结果，无需再构建
+			// ── Match ──
 			b.Run("Match/"+l.name+"/"+tc.name, func(b *testing.B) {
 				b.ResetTimer()
 				for i := 0; i < b.N; i++ {
 					matchFn()
 				}
 			})
+
+			var m1, m2 runtime.MemStats
+			runtime.GC()
+			debug.FreeOSMemory()
+			runtime.GC()
+			runtime.ReadMemStats(&m1)
+
+			resetFn()
+
+			runtime.GC()
+			debug.FreeOSMemory()
+			runtime.GC()
+			runtime.ReadMemStats(&m2)
+
+			d := m1.HeapAlloc - m2.HeapAlloc
+			fmt.Printf("Benchmark/Reset/%s/%s-%d\t\t1\t\t%d free-B\n", l.name, tc.name, n, d)
 		}
 	}
 }

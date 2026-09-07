@@ -54,7 +54,7 @@ if _cjk_font:
 
 # ── parse go bench output ─────────────────────────
 
-NAME_RE = re.compile(r"^Benchmark/(Build|Match)/(.+?)/(\w+_\d+)-\d+\s+\d+\s+")
+NAME_RE = re.compile(r"^Benchmark/(Build|Match|Reset)/(.+?)/(\w+_\d+)-\d+\s+\d+\s+")
 METRIC_RE = re.compile(r"([\d.]+)\s+([\w/\-]+)")
 
 
@@ -74,7 +74,7 @@ def parse(path):
                 ns_op=metrics.get("ns/op"),
                 B_op=metrics.get("B/op"),
                 allocs_op=metrics.get("allocs/op"),
-                retained=metrics.get("retained-B"),
+                free=metrics.get("free-B"),
             ))
     return rows
 
@@ -128,9 +128,9 @@ def make_charts(rows, out_dir):
     # (bench, column, 中文标题, 显示单位, 除数, 输出文件名)
     # 文件名统一小写，前缀 bench_ 方便排序到一起
     metrics = [
-        ("Build", "ns_op", "建树耗时", "ms", 1e6, "bench_build_time.png"),
+        ("Reset", "free", "建树产物大小", "MB", 1024 ** 2, "bench_build_retained.png"),
         ("Build", "B_op", "建树内存申请量", "MB", 1024 ** 2, "bench_build_alloc.png"),
-        ("Build", "retained", "建树产物占用", "MB", 1024 ** 2, "bench_build_retained.png"),
+        ("Build", "ns_op", "建树耗时", "ms", 1e6, "bench_build_time.png"),
         ("Match", "ns_op", "匹配耗时", "ms", 1e6, "bench_match_time.png"),
     ]
     langs = ["cn", "en", "mix"]
@@ -185,18 +185,18 @@ def make_charts(rows, out_dir):
 
 # 图表文件名 → 中文标题（用于 README.md 中引用）
 CHART_TITLES = {
-    "bench_build_time": "建树耗时",
+    "bench_build_retained": "建树产物大小",
     "bench_build_alloc": "建树内存申请量",
-    "bench_build_retained": "建树产物占用",
+    "bench_build_time": "建树耗时",
     "bench_match_time": "匹配耗时",
 }
 
 
 def make_tables(rows, out_path, chart_files):
     metrics = [
-        ("Build", "ns_op", "建树耗时", fmt_time),
+        ("Reset", "free", "建树产物大小", fmt_bytes),
         ("Build", "B_op", "建树内存申请量", fmt_bytes),
-        ("Build", "retained", "建树产物占用", fmt_bytes),
+        ("Build", "ns_op", "建树耗时", fmt_time),
         ("Match", "ns_op", "匹配耗时", fmt_time),
     ]
     langs = ["cn", "en", "mix"]
@@ -212,42 +212,58 @@ def make_tables(rows, out_path, chart_files):
     # ── intro ──
     lines.append("## 简介\n")
     lines.append("本项目对多个 Go 语言 Aho-Corasick（AC 自动机）开源库进行性能基准测试，"
-                 "对比维度包括 **建树耗时**、**建树内存申请量**、**建树产物内存占用**、**匹配耗时**。\n")
-    lines.append("测试词表覆盖 100 / 1,000 / 10,000 / 100,000 四种规模，"
-                 "语言类型涵盖纯中文、纯英文、中英混合（各 50%），"
-                 "词表由代码随机构造并模拟真实概率分布。\n")
+                 "对比维度包括 **建树产物大小**、**建树内存申请量**、**建树耗时**、**匹配耗时**。\n")
+    lines.append("### 测试数据\n")
+    lines.append("- **词表规模**：每组包含 100 / 1,000 / 10,000 / 100,000 个互不重复的 pattern（词条）。\n")
+    lines.append("- **纯中文词条**：由 `U+4E00`～`U+9FA5` 范围内的汉字生成；词长为 2～4 个汉字，"
+                 "其中 2 字词占 50%、3 字词占 35%、4 字词占 15%。\n")
+    lines.append("- **纯英文词条**：由 26 个小写英文字母生成；词长服从均值为 6、标准差为 2 的近似正态分布，"
+                 "并限制在 3～12 个字母之间。\n")
+    lines.append("- **中英混合词表**：生成每个词条时各以 50% 的概率选择中文或英文，词长规则分别沿用上述配置。\n")
+    lines.append("- **字符分布**：字符按齐夫分布采样，使少数字符高频、大量字符低频；中文字符多样性随词表规模增加，"
+                 "英文字符池固定为 26 个小写字母。所有生成结果都会去重，直到达到目标词条数量。\n")
+    lines.append("- **匹配文本**：每组生成约 100 KB 的同语言类型文本；生成过程中有 10% 的概率直接插入词表中的词条，"
+                 "以保证稳定的命中样本。随机数种子固定，确保各次 Benchmark 使用相同数据。\n")
     lines.append("### 对比库\n")
-    lines.append("| 库 | Benchmark 名 | 说明 |")
-    lines.append("|---|---|---|")
     lines.append(
-        "| [china-tjj/ahocorasick](https://github.com/china-tjj/ahocorasick) | china-tjj | 紧凑 Trie，完整命中结果，结果附带 term 索引，自动选择最小 uint 类型 |")
-    lines.append("| 同上 | china-tjj(SL) | 同上 + 后缀链接 |")
-    lines.append("| 同上 | china-tjj(U64) | 同上 + 手动指定 uint64 |")
-    lines.append("| 同上 | china-tjj(SL+U64) | 同上 + 后缀链接 + 手动指定 uint64 |")
+        "| 库 | Benchmark 名 | 实现算法 | 索引粒度 | 完整匹配结果 | 后缀链接 | 其它 |")
+    lines.append("|---|---|---|---|---|---|---|")
     lines.append(
-        "| [BobuSumisu/aho-corasick](https://github.com/BobuSumisu/aho-corasick) | BobuSumisu-ac | DFA 矩阵，完整命中结果，int 索引，构建较快 |")
+        "| [china-tjj/ahocorasick](https://github.com/china-tjj/ahocorasick) | china-tjj | 标准Trie | rune | 完整 | 无 | 紧凑数据结构，自动选择最小 uint 类型 |")
     lines.append(
-        "| [BobuSumisu/go-ahocorasick](https://github.com/BobuSumisu/go-ahocorasick) | BobuSumisu-go-ac | 双数组 Trie，完整命中结果，作者旧版实现 |")
+        "| 同上 | china-tjj(FB) | 标准Trie | rune | 完整 | 无 | 紧凑数据结构，自动选择最小 uint 类型，启用快速构建模式 |")
     lines.append(
-        "| [anknown/ahocorasick](https://github.com/anknown/ahocorasick) | anknown | 双数组 Trie，完整命中结果，int 索引 |")
+        "| 同上 | china-tjj(U64) | 标准Trie | rune | 完整 | 无 | 紧凑数据结构，手动指定 uint64 类型 |")
     lines.append(
-        "| [TheFutureIsOurs/ahocorasick](https://github.com/TheFutureIsOurs/ahocorasick) | TheFutureIsOurs | 双数组 Trie，不完整命中结果，同终点仅保留最长 term |")
+        "| 同上 | china-tjj(U64+OL) | 标准Trie | rune | 完整 | 有 | 紧凑数据结构，手动指定 uint64 类型，开启后缀链接 |")
     lines.append(
-        "| [orbit-w/aho_corasick](https://github.com/orbit-w/aho_corasick) | orbit-w | 双数组 Trie，完整命中结果，保留全部后缀命中 |")
+        "| 同上 | china-tjj(U64+TI) | 标准Trie | rune | 完整 | 无 | 紧凑数据结构，手动指定 uint64 类型，返回结果含pattern id |")
     lines.append(
-        "| [sepetrov/ahocorasick](https://github.com/sepetrov/ahocorasick) | sepetrov | 标准 Trie，完整命中结果，map 存储子节点 |")
+        "| 同上 | china-tjj(U64+OL+TI) | 标准Trie | rune | 完整 | 有 | 紧凑数据结构，手动指定 uint64 类型，开启后缀链接，返回结果含pattern id |")
     lines.append(
-        "| [cloudflare/ahocorasick](https://github.com/cloudflare/ahocorasick) | cloudflare | 标准 Trie，完整命中结果，byte 级匹配，int 索引 |")
+        "| [BobuSumisu/aho-corasick](https://github.com/BobuSumisu/aho-corasick) | BobuSumisu-ac | 标准Trie + 预计算转移表 | byte | 完整 | 有 | 返回Match含pattern id与位置；sync.Pool复用；支持Encode/Decode(gzip) |")
     lines.append(
-        "| [petar-dambovaliev/aho-corasick](https://github.com/petar-dambovaliev/aho-corasick) | petar-dambovaliev | NFA，完整命中结果，移植自 Rust aho-corasick |")
+        "| [BobuSumisu/go-ahocorasick](https://github.com/BobuSumisu/go-ahocorasick) | BobuSumisu-go-ac | 双数组Trie(DAT) | byte | 完整 | 有 | SaveTrie/LoadTrie；Match结果不含pattern索引(仅pos+match bytes) |")
     lines.append(
-        "| [iohub/ahocorasick](https://github.com/iohub/ahocorasick) | iohub | cedar 双数组，完整命中结果，byte 级匹配 |")
+        "| [anknown/ahocorasick](https://github.com/anknown/ahocorasick) | anknown | 双数组Trie(DAT) | rune | 完整 | 有 | 输出在构建时合并到output(等价后缀链效果)；Term不含pattern索引(靠Word) |")
     lines.append(
-        "| [ClarkThan/ahocorasick](https://github.com/ClarkThan/ahocorasick) | ClarkThan | 标准 Trie，完整命中结果，map[rune]*Node |")
+        "| [TheFutureIsOurs/ahocorasick](https://github.com/TheFutureIsOurs/ahocorasick) | TheFutureIsOurs | 双数组Trie(DAT) | rune | 不完整 | 有 | output压缩：同终点/后缀只保留最长term；主打低内存/低GC |")
     lines.append(
-        "| [pgavlin/aho-corasick](https://github.com/pgavlin/aho-corasick) | pgavlin | NFA/DFA，完整命中结果，源自 petar-dambovaliev |")
+        "| [orbit-w/aho_corasick](https://github.com/orbit-w/aho_corasick) | orbit-w | 双数组Trie(DAT) | rune | 完整 | 有 | Trie构建时把fail节点output合并到当前节点；提供Validate/Replace等 |")
     lines.append(
-        "| [gnames/aho_corasick](https://github.com/gnames/aho_corasick) | gnames | 标准 Trie，完整命中结果，byte 级匹配，含后缀链接 |")
+        "| [sepetrov/ahocorasick](https://github.com/sepetrov/ahocorasick) | sepetrov | 标准Trie | rune | 完整 | 有 | 返回map[patternIndex][]pos(位置是byte offset)；含suffixLink+dictSuffixLink |")
+    lines.append(
+        "| [cloudflare/ahocorasick](https://github.com/cloudflare/ahocorasick) | cloudflare | 标准Trie | byte | 不完整 | 有 | Match返回命中过的pattern集合(去重、无位置)；有MatchThreadSafe/Contains |")
+    lines.append(
+        "| [petar-dambovaliev/aho-corasick](https://github.com/petar-dambovaliev/aho-corasick) | petar-dambovaliev | NFA/DFA | byte | 完整 | 有 | 多种MatchKind；Standard可完整/可重叠；LeftMost*会裁剪；含prefilter/Replace/迭代器 |")
+    lines.append(
+        "| [iohub/ahocorasick](https://github.com/iohub/ahocorasick) | iohub | cedar 双数组Trie | byte | 完整 | 有 | value可存任意interface{}；迭代器输出；sync.Pool复用；graphviz可视化 |")
+    lines.append(
+        "| [ClarkThan/ahocorasick](https://github.com/ClarkThan/ahocorasick) | ClarkThan | 标准Trie | rune | 完整 | 有 | SearchAppend/SearchIndexedAppend支持buf复用；输出不含pattern索引(只有Hit{Start,Len}或string) |")
+    lines.append(
+        "| [pgavlin/aho-corasick](https://github.com/pgavlin/aho-corasick) | pgavlin | NFA/DFA | byte | 完整 | 有 | 基本同petar分支；Standard可完整；LeftMost*会裁剪 |")
+    lines.append(
+        "| [gnames/aho_corasick](https://github.com/gnames/aho_corasick) | gnames | 标准Trie | byte | 不完整 | 有 | dict link实现为单跳(仅linkDict一次，不会多级追溯)，可能漏更深后缀命中；Match含pattern索引+start/end |")
     lines.append("")
 
     # ── images first ──
@@ -261,19 +277,20 @@ def make_tables(rows, out_path, chart_files):
     # ── then tables ──
     lines.append("---\n")
     lines.append("## 详细数据\n")
-    for bench, col, title, fmt_fn in metrics:
-        lines.append(f"### {title}\n")
-        for lang in langs:
-            lines.append(f"#### {LANG_TITLE.get(lang, lang)}\n")
-            hdr = "| Library | " + " | ".join(f"{s:,}" for s in all_sizes) + " |"
-            sep = "|" + "|".join(["---"] * (len(all_sizes) + 1)) + "|"
-            lines += [hdr, sep]
+    metric_headers = [title for _, _, title, _ in metrics]
+    for lang in langs:
+        lines.append(f"### {LANG_TITLE.get(lang, lang)}\n")
+        for size in all_sizes:
+            lines.append(f"#### 词表规模：{size:,}\n")
+            header = "| 测试库 | " + " | ".join(metric_headers) + " |"
+            separator = "|" + "|".join(["---"] * (len(metrics) + 1)) + "|"
+            lines += [header, separator]
             for lib in all_libs:
                 cells = []
-                for s in all_sizes:
-                    r = idx.get((bench, lib, lang, s))
-                    v = r.get(col) if r else None
-                    cells.append(fmt_fn(v))
+                for bench, col, _, fmt_fn in metrics:
+                    row = idx.get((bench, lib, lang, size))
+                    value = row.get(col) if row else None
+                    cells.append(fmt_fn(value))
                 lines.append(f"| {lib} | " + " | ".join(cells) + " |")
             lines.append("")
 
