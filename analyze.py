@@ -229,17 +229,17 @@ def make_tables(rows, out_path, chart_files):
         "| 库 | Benchmark 名 | 实现算法 | 索引粒度 | 完整匹配结果 | 后缀链接 | 其它 |")
     lines.append("|---|---|---|---|---|---|---|")
     lines.append(
-        "| [china-tjj/ahocorasick](https://github.com/china-tjj/ahocorasick) | china-tjj | 标准Trie | rune | 完整 | 无 | 紧凑数据结构，自动选择最小 uint 类型 |")
+        "| [china-tjj/ahocorasick](https://github.com/china-tjj/ahocorasick) | china-tjj | 标准Trie | auto | 完整 | 无 | 紧凑数据结构，自动选择最小 uint 类型 |")
     lines.append(
-        "| 同上 | china-tjj(FB) | 标准Trie | rune | 完整 | 无 | 紧凑数据结构，自动选择最小 uint 类型，启用快速构建模式 |")
+        "| 同上 | china-tjj(FB) | 标准Trie | auto | 完整 | 无 | 紧凑数据结构，自动选择最小 uint 类型，启用快速构建模式 |")
     lines.append(
-        "| 同上 | china-tjj(U64) | 标准Trie | rune | 完整 | 无 | 紧凑数据结构，手动指定 uint64 类型 |")
+        "| 同上 | china-tjj(U64) | 标准Trie | auto | 完整 | 无 | 紧凑数据结构，手动指定 uint64 类型 |")
     lines.append(
-        "| 同上 | china-tjj(U64+OL) | 标准Trie | rune | 完整 | 有 | 紧凑数据结构，手动指定 uint64 类型，开启后缀链接 |")
+        "| 同上 | china-tjj(U64+OL) | 标准Trie | auto | 完整 | 有 | 紧凑数据结构，手动指定 uint64 类型，开启后缀链接 |")
     lines.append(
-        "| 同上 | china-tjj(U64+TI) | 标准Trie | rune | 完整 | 无 | 紧凑数据结构，手动指定 uint64 类型，返回结果含pattern id |")
+        "| 同上 | china-tjj(U64+TI) | 标准Trie | auto | 完整 | 无 | 紧凑数据结构，手动指定 uint64 类型，返回结果含pattern id |")
     lines.append(
-        "| 同上 | china-tjj(U64+OL+TI) | 标准Trie | rune | 完整 | 有 | 紧凑数据结构，手动指定 uint64 类型，开启后缀链接，返回结果含pattern id |")
+        "| 同上 | china-tjj(U64+OL+TI) | 标准Trie | auto | 完整 | 有 | 紧凑数据结构，手动指定 uint64 类型，开启后缀链接，返回结果含pattern id |")
     lines.append(
         "| [BobuSumisu/aho-corasick](https://github.com/BobuSumisu/aho-corasick) | BobuSumisu-ac | 标准Trie + 预计算转移表 | byte | 完整 | 有 | 返回Match含pattern id与位置；sync.Pool复用；支持Encode/Decode(gzip) |")
     lines.append(

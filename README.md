@@ -22,12 +22,12 @@
 
 | 库 | Benchmark 名 | 实现算法 | 索引粒度 | 完整匹配结果 | 后缀链接 | 其它 |
 |---|---|---|---|---|---|---|
-| [china-tjj/ahocorasick](https://github.com/china-tjj/ahocorasick) | china-tjj | 标准Trie | rune | 完整 | 无 | 紧凑数据结构，自动选择最小 uint 类型 |
-| 同上 | china-tjj(FB) | 标准Trie | rune | 完整 | 无 | 紧凑数据结构，自动选择最小 uint 类型，启用快速构建模式 |
-| 同上 | china-tjj(U64) | 标准Trie | rune | 完整 | 无 | 紧凑数据结构，手动指定 uint64 类型 |
-| 同上 | china-tjj(U64+OL) | 标准Trie | rune | 完整 | 有 | 紧凑数据结构，手动指定 uint64 类型，开启后缀链接 |
-| 同上 | china-tjj(U64+TI) | 标准Trie | rune | 完整 | 无 | 紧凑数据结构，手动指定 uint64 类型，返回结果含pattern id |
-| 同上 | china-tjj(U64+OL+TI) | 标准Trie | rune | 完整 | 有 | 紧凑数据结构，手动指定 uint64 类型，开启后缀链接，返回结果含pattern id |
+| [china-tjj/ahocorasick](https://github.com/china-tjj/ahocorasick) | china-tjj | 标准Trie | auto | 完整 | 无 | 紧凑数据结构，自动选择最小 uint 类型 |
+| 同上 | china-tjj(FB) | 标准Trie | auto | 完整 | 无 | 紧凑数据结构，自动选择最小 uint 类型，启用快速构建模式 |
+| 同上 | china-tjj(U64) | 标准Trie | auto | 完整 | 无 | 紧凑数据结构，手动指定 uint64 类型 |
+| 同上 | china-tjj(U64+OL) | 标准Trie | auto | 完整 | 有 | 紧凑数据结构，手动指定 uint64 类型，开启后缀链接 |
+| 同上 | china-tjj(U64+TI) | 标准Trie | auto | 完整 | 无 | 紧凑数据结构，手动指定 uint64 类型，返回结果含pattern id |
+| 同上 | china-tjj(U64+OL+TI) | 标准Trie | auto | 完整 | 有 | 紧凑数据结构，手动指定 uint64 类型，开启后缀链接，返回结果含pattern id |
 | [BobuSumisu/aho-corasick](https://github.com/BobuSumisu/aho-corasick) | BobuSumisu-ac | 标准Trie + 预计算转移表 | byte | 完整 | 有 | 返回Match含pattern id与位置；sync.Pool复用；支持Encode/Decode(gzip) |
 | [BobuSumisu/go-ahocorasick](https://github.com/BobuSumisu/go-ahocorasick) | BobuSumisu-go-ac | 双数组Trie(DAT) | byte | 完整 | 有 | SaveTrie/LoadTrie；Match结果不含pattern索引(仅pos+match bytes) |
 | [anknown/ahocorasick](https://github.com/anknown/ahocorasick) | anknown | 双数组Trie(DAT) | rune | 完整 | 有 | 输出在构建时合并到output(等价后缀链效果)；Term不含pattern索引(靠Word) |
@@ -69,93 +69,93 @@
 
 | 测试库 | 建树产物大小 | 建树内存申请量 | 建树耗时 | 匹配耗时 |
 |---|---|---|---|---|
-| china-tjj | 2.7KB | 3.2KB | 14.7µs | 868.8µs |
-| china-tjj(FB) | 2.7KB | 8.9KB | 15.8µs | 847.8µs |
-| china-tjj(U64) | 7.2KB | 9.0KB | 14.7µs | 784.3µs |
-| china-tjj(U64+OL) | 9.2KB | 11.0KB | 15.0µs | 756.0µs |
-| china-tjj(U64+TI) | 9.0KB | 10.8KB | 14.9µs | 792.1µs |
-| china-tjj(U64+OL+TI) | 11.0KB | 12.8KB | 15.1µs | 776.2µs |
-| BobuSumisu-ac | 1.33MB | 1.50MB | 221.5µs | 439.7µs |
-| BobuSumisu-go-ac | 32.8KB | 60.9KB | 365.2µs | 484.5µs |
-| anknown | 1.42MB | 2.66MB | 225.0µs | 559.4µs |
-| TheFutureIsOurs | 2.09MB | 7.57MB | 456.7µs | 212.3µs |
-| orbit-w | 2.57MB | 3.60MB | 119.8µs | 184.7µs |
-| sepetrov | 44.0KB | 58.8KB | 31.7µs | 590.7µs |
-| cloudflare | 3.22MB | 3.26MB | 672.2µs | 282.3µs |
-| petar-dambovaliev | 102.0KB | 226.7KB | 82.9µs | 1.20ms |
-| iohub | 52.4KB | 125.6KB | 60.3µs | 544.7µs |
-| ClarkThan | 41.3KB | 45.8KB | 28.6µs | 597.6µs |
-| pgavlin | 102.0KB | 225.5KB | 81.3µs | 1.25ms |
-| gnames | 157.2KB | 190.9KB | 117.0µs | 2.12ms |
+| china-tjj | 2.7KB | 3.2KB | 14.1µs | 891.0µs |
+| china-tjj(FB) | 2.7KB | 8.4KB | 14.8µs | 891.7µs |
+| china-tjj(U64) | 7.2KB | 9.0KB | 14.5µs | 784.8µs |
+| china-tjj(U64+OL) | 9.2KB | 11.0KB | 14.9µs | 770.2µs |
+| china-tjj(U64+TI) | 9.0KB | 10.8KB | 14.9µs | 793.3µs |
+| china-tjj(U64+OL+TI) | 11.0KB | 12.8KB | 15.1µs | 753.2µs |
+| BobuSumisu-ac | 1.33MB | 1.50MB | 198.8µs | 359.8µs |
+| BobuSumisu-go-ac | 32.8KB | 60.9KB | 353.6µs | 458.4µs |
+| anknown | 1.42MB | 2.66MB | 210.5µs | 414.8µs |
+| TheFutureIsOurs | 2.09MB | 7.57MB | 304.6µs | 193.5µs |
+| orbit-w | 2.57MB | 3.60MB | 102.2µs | 157.1µs |
+| sepetrov | 44.0KB | 58.8KB | 29.7µs | 596.2µs |
+| cloudflare | 3.22MB | 3.26MB | 547.3µs | 284.5µs |
+| petar-dambovaliev | 102.0KB | 226.7KB | 79.9µs | 1.15ms |
+| iohub | 52.4KB | 125.6KB | 51.7µs | 530.7µs |
+| ClarkThan | 41.3KB | 45.8KB | 25.7µs | 643.0µs |
+| pgavlin | 102.0KB | 225.5KB | 74.6µs | 1.16ms |
+| gnames | 157.2KB | 190.9KB | 112.7µs | 2.01ms |
 
 #### 词表规模：1,000
 
 | 测试库 | 建树产物大小 | 建树内存申请量 | 建树耗时 | 匹配耗时 |
 |---|---|---|---|---|
-| china-tjj | 25.5KB | 29.5KB | 211.3µs | 1.36ms |
-| china-tjj(FB) | 25.5KB | 81.3KB | 180.6µs | 1.22ms |
-| china-tjj(U64) | 70.2KB | 86.3KB | 219.0µs | 1.11ms |
-| china-tjj(U64+OL) | 90.2KB | 106.3KB | 202.3µs | 1.10ms |
-| china-tjj(U64+TI) | 86.2KB | 102.3KB | 203.4µs | 1.24ms |
-| china-tjj(U64+OL+TI) | 106.2KB | 122.3KB | 211.1µs | 1.28ms |
-| BobuSumisu-ac | 12.00MB | 13.51MB | 1.76ms | 461.0µs |
-| BobuSumisu-go-ac | 280.1KB | 727.3KB | 11.12ms | 535.4µs |
-| anknown | 1.58MB | 3.56MB | 644.5µs | 461.8µs |
-| TheFutureIsOurs | 2.09MB | 7.89MB | 727.8µs | 240.6µs |
-| orbit-w | 2.77MB | 4.07MB | 865.8µs | 206.6µs |
-| sepetrov | 425.2KB | 599.1KB | 319.9µs | 832.1µs |
-| cloudflare | 31.77MB | 32.12MB | 5.10ms | 750.4µs |
-| petar-dambovaliev | 661.4KB | 2.21MB | 867.3µs | 1.62ms |
-| iohub | 428.0KB | 1.12MB | 527.2µs | 621.4µs |
-| ClarkThan | 398.5KB | 437.3KB | 292.6µs | 811.3µs |
-| pgavlin | 661.4KB | 2.20MB | 855.7µs | 1.58ms |
-| gnames | 1.37MB | 1.71MB | 1.09ms | 2.37ms |
+| china-tjj | 25.5KB | 29.5KB | 202.6µs | 1.23ms |
+| china-tjj(FB) | 25.5KB | 76.2KB | 166.5µs | 1.28ms |
+| china-tjj(U64) | 70.2KB | 86.3KB | 198.9µs | 1.12ms |
+| china-tjj(U64+OL) | 90.2KB | 106.3KB | 204.7µs | 1.06ms |
+| china-tjj(U64+TI) | 86.2KB | 102.3KB | 205.1µs | 1.15ms |
+| china-tjj(U64+OL+TI) | 106.2KB | 122.3KB | 210.9µs | 1.10ms |
+| BobuSumisu-ac | 12.00MB | 13.51MB | 1.69ms | 456.4µs |
+| BobuSumisu-go-ac | 280.1KB | 727.3KB | 10.72ms | 519.8µs |
+| anknown | 1.58MB | 3.56MB | 641.7µs | 444.0µs |
+| TheFutureIsOurs | 2.09MB | 7.89MB | 712.7µs | 236.5µs |
+| orbit-w | 2.77MB | 4.07MB | 791.5µs | 204.6µs |
+| sepetrov | 425.2KB | 599.1KB | 313.9µs | 788.1µs |
+| cloudflare | 31.77MB | 32.12MB | 4.83ms | 569.7µs |
+| petar-dambovaliev | 661.4KB | 2.21MB | 801.4µs | 1.51ms |
+| iohub | 428.0KB | 1.12MB | 507.8µs | 610.1µs |
+| ClarkThan | 398.5KB | 437.3KB | 273.1µs | 735.5µs |
+| pgavlin | 661.4KB | 2.20MB | 813.1µs | 1.47ms |
+| gnames | 1.37MB | 1.71MB | 1.09ms | 2.19ms |
 
 #### 词表规模：10,000
 
 | 测试库 | 建树产物大小 | 建树内存申请量 | 建树耗时 | 匹配耗时 |
 |---|---|---|---|---|
-| china-tjj | 277.4KB | 330.7KB | 3.94ms | 722.7µs |
-| china-tjj(FB) | 277.4KB | 815.9KB | 1.66ms | 731.8µs |
-| china-tjj(U64) | 720.4KB | 936.5KB | 4.30ms | 727.3µs |
-| china-tjj(U64+OL) | 904.4KB | 1.09MB | 4.12ms | 766.1µs |
-| china-tjj(U64+TI) | 880.4KB | 1.07MB | 4.03ms | 782.9µs |
-| china-tjj(U64+OL+TI) | 1.04MB | 1.25MB | 4.07ms | 794.7µs |
-| BobuSumisu-ac | 110.61MB | 125.22MB | 14.42ms | 865.9µs |
-| BobuSumisu-go-ac | 2.53MB | 8.92MB | 727.37ms | 786.7µs |
-| anknown | 3.76MB | 16.66MB | 6.78ms | 668.4µs |
-| TheFutureIsOurs | 2.09MB | 11.20MB | 3.49ms | 350.4µs |
-| orbit-w | 3.12MB | 9.05MB | 64.92ms | 314.3µs |
-| sepetrov | 3.77MB | 5.11MB | 3.54ms | 1.32ms |
-| cloudflare | 317.17MB | 320.84MB | 61.84ms | 1.41ms |
-| petar-dambovaliev | 5.60MB | 22.75MB | 10.18ms | 2.54ms |
-| iohub | 3.33MB | 9.65MB | 5.17ms | 933.8µs |
-| ClarkThan | 3.54MB | 3.84MB | 3.17ms | 1.23ms |
-| pgavlin | 5.60MB | 22.63MB | 12.06ms | 2.19ms |
-| gnames | 12.53MB | 16.69MB | 12.37ms | 3.23ms |
+| china-tjj | 277.4KB | 317.6KB | 3.86ms | 799.8µs |
+| china-tjj(FB) | 277.4KB | 749.7KB | 1.68ms | 820.7µs |
+| china-tjj(U64) | 720.4KB | 880.6KB | 3.89ms | 810.4µs |
+| china-tjj(U64+OL) | 904.4KB | 1.04MB | 3.95ms | 790.2µs |
+| china-tjj(U64+TI) | 880.4KB | 1.02MB | 3.94ms | 812.3µs |
+| china-tjj(U64+OL+TI) | 1.04MB | 1.20MB | 4.02ms | 788.8µs |
+| BobuSumisu-ac | 110.61MB | 125.22MB | 12.79ms | 619.7µs |
+| BobuSumisu-go-ac | 2.53MB | 8.92MB | 703.28ms | 742.1µs |
+| anknown | 3.76MB | 16.66MB | 5.68ms | 653.3µs |
+| TheFutureIsOurs | 2.09MB | 11.20MB | 3.30ms | 328.2µs |
+| orbit-w | 3.12MB | 9.05MB | 62.95ms | 320.9µs |
+| sepetrov | 3.77MB | 5.11MB | 3.48ms | 1.29ms |
+| cloudflare | 317.17MB | 320.84MB | 53.95ms | 1.59ms |
+| petar-dambovaliev | 5.60MB | 22.75MB | 9.97ms | 2.38ms |
+| iohub | 3.33MB | 9.65MB | 5.26ms | 960.8µs |
+| ClarkThan | 3.54MB | 3.84MB | 3.06ms | 1.22ms |
+| pgavlin | 5.60MB | 22.63MB | 9.64ms | 2.28ms |
+| gnames | 12.53MB | 16.69MB | 12.23ms | 3.26ms |
 
 #### 词表规模：100,000
 
 | 测试库 | 建树产物大小 | 建树内存申请量 | 建树耗时 | 匹配耗时 |
 |---|---|---|---|---|
-| china-tjj | 2.81MB | 3.64MB | 49.97ms | 1.17ms |
-| china-tjj(FB) | 2.81MB | 9.25MB | 22.40ms | 1.26ms |
-| china-tjj(U64) | 4.91MB | 6.56MB | 48.32ms | 1.17ms |
-| china-tjj(U64+OL) | 6.29MB | 7.94MB | 50.23ms | 1.31ms |
-| china-tjj(U64+TI) | 6.44MB | 8.09MB | 48.52ms | 1.20ms |
-| china-tjj(U64+OL+TI) | 7.82MB | 9.47MB | 50.20ms | 1.26ms |
-| BobuSumisu-ac | 914.27MB | 1.007GB | 380.64ms | 2.62ms |
-| BobuSumisu-go-ac | 19.40MB | 73.78MB | 44.525s | 1.29ms |
-| anknown | 17.24MB | 110.84MB | 63.34ms | 1.08ms |
-| TheFutureIsOurs | 8.19MB | 69.22MB | 83.64ms | 398.8µs |
-| orbit-w | 9.83MB | 39.88MB | 1.330s | 391.6µs |
-| sepetrov | 26.35MB | 36.96MB | 39.54ms | 2.45ms |
-| cloudflare | 3.097GB | 3.132GB | 1.090s | 4.97ms |
-| petar-dambovaliev | 50.38MB | 229.34MB | 220.83ms | 6.50ms |
-| iohub | 26.60MB | 78.90MB | 57.19ms | 1.55ms |
-| ClarkThan | 25.26MB | 29.39MB | 37.84ms | 2.00ms |
-| pgavlin | 50.38MB | 228.09MB | 209.20ms | 4.59ms |
-| gnames | 100.12MB | 138.67MB | 151.15ms | 4.94ms |
+| china-tjj | 2.81MB | 3.58MB | 49.42ms | 1.25ms |
+| china-tjj(FB) | 2.81MB | 9.14MB | 21.35ms | 1.25ms |
+| china-tjj(U64) | 4.91MB | 6.44MB | 49.48ms | 1.21ms |
+| china-tjj(U64+OL) | 6.29MB | 7.82MB | 49.19ms | 1.19ms |
+| china-tjj(U64+TI) | 6.44MB | 7.97MB | 48.35ms | 1.20ms |
+| china-tjj(U64+OL+TI) | 7.82MB | 9.35MB | 49.14ms | 1.26ms |
+| BobuSumisu-ac | 914.27MB | 1.007GB | 250.05ms | 2.06ms |
+| BobuSumisu-go-ac | 19.40MB | 73.78MB | 43.612s | 1.12ms |
+| anknown | 17.24MB | 110.84MB | 59.28ms | 1.01ms |
+| TheFutureIsOurs | 8.19MB | 69.22MB | 79.25ms | 372.9µs |
+| orbit-w | 9.83MB | 39.88MB | 1.298s | 377.7µs |
+| sepetrov | 26.35MB | 36.97MB | 36.38ms | 1.96ms |
+| cloudflare | 3.097GB | 3.132GB | 1.078s | 3.41ms |
+| petar-dambovaliev | 50.38MB | 229.36MB | 195.58ms | 4.10ms |
+| iohub | 26.60MB | 78.90MB | 55.04ms | 1.31ms |
+| ClarkThan | 25.26MB | 29.39MB | 34.61ms | 1.86ms |
+| pgavlin | 50.38MB | 228.20MB | 199.96ms | 4.09ms |
+| gnames | 100.12MB | 138.67MB | 159.34ms | 5.15ms |
 
 ### 纯英文
 
@@ -163,93 +163,93 @@
 
 | 测试库 | 建树产物大小 | 建树内存申请量 | 建树耗时 | 匹配耗时 |
 |---|---|---|---|---|
-| china-tjj | 5.2KB | 5.7KB | 24.1µs | 2.05ms |
-| china-tjj(FB) | 5.2KB | 13.7KB | 21.3µs | 2.02ms |
-| china-tjj(U64) | 14.2KB | 16.0KB | 23.9µs | 1.81ms |
-| china-tjj(U64+OL) | 18.2KB | 20.0KB | 23.5µs | 1.69ms |
-| china-tjj(U64+TI) | 16.0KB | 17.8KB | 23.0µs | 2.12ms |
-| china-tjj(U64+OL+TI) | 20.0KB | 21.8KB | 24.0µs | 1.81ms |
-| BobuSumisu-ac | 1.01MB | 1.13MB | 169.0µs | 476.6µs |
-| BobuSumisu-go-ac | 29.5KB | 57.1KB | 256.7µs | 536.2µs |
-| anknown | 38.0KB | 192.2KB | 88.3µs | 1.35ms |
-| TheFutureIsOurs | 37.1KB | 142.8KB | 45.5µs | 731.1µs |
-| orbit-w | 30.8KB | 123.1KB | 36.8µs | 728.0µs |
-| sepetrov | 101.8KB | 130.7KB | 75.6µs | 2.08ms |
-| cloudflare | 2.46MB | 2.49MB | 490.8µs | 347.0µs |
-| petar-dambovaliev | 95.4KB | 182.9KB | 74.3µs | 1.53ms |
-| iohub | 52.4KB | 113.1KB | 45.7µs | 788.5µs |
-| ClarkThan | 93.1KB | 96.0KB | 60.3µs | 2.03ms |
-| pgavlin | 95.4KB | 182.0KB | 74.4µs | 1.47ms |
-| gnames | 114.0KB | 137.1KB | 103.7µs | 2.29ms |
+| china-tjj | 3.7KB | 4.2KB | 19.5µs | 2.24ms |
+| china-tjj(FB) | 3.7KB | 10.0KB | 20.1µs | 2.25ms |
+| china-tjj(U64) | 12.7KB | 14.5KB | 19.5µs | 2.05ms |
+| china-tjj(U64+OL) | 16.7KB | 18.5KB | 19.4µs | 1.78ms |
+| china-tjj(U64+TI) | 14.5KB | 16.3KB | 19.4µs | 2.07ms |
+| china-tjj(U64+OL+TI) | 18.5KB | 20.3KB | 20.3µs | 1.78ms |
+| BobuSumisu-ac | 1.01MB | 1.13MB | 171.0µs | 441.4µs |
+| BobuSumisu-go-ac | 29.5KB | 57.1KB | 254.1µs | 548.1µs |
+| anknown | 38.0KB | 192.2KB | 86.8µs | 1.48ms |
+| TheFutureIsOurs | 37.1KB | 142.8KB | 45.1µs | 710.1µs |
+| orbit-w | 30.8KB | 123.1KB | 35.4µs | 698.6µs |
+| sepetrov | 101.8KB | 130.7KB | 70.1µs | 2.03ms |
+| cloudflare | 2.46MB | 2.49MB | 488.8µs | 388.1µs |
+| petar-dambovaliev | 95.4KB | 182.9KB | 68.9µs | 1.44ms |
+| iohub | 52.4KB | 113.1KB | 44.8µs | 746.3µs |
+| ClarkThan | 93.1KB | 96.0KB | 55.2µs | 1.90ms |
+| pgavlin | 95.4KB | 182.0KB | 68.4µs | 1.45ms |
+| gnames | 114.0KB | 137.1KB | 101.0µs | 2.25ms |
 
 #### 词表规模：1,000
 
 | 测试库 | 建树产物大小 | 建树内存申请量 | 建树耗时 | 匹配耗时 |
 |---|---|---|---|---|
-| china-tjj | 45.5KB | 49.5KB | 280.7µs | 2.57ms |
-| china-tjj(FB) | 45.5KB | 123.9KB | 213.7µs | 2.53ms |
-| china-tjj(U64) | 130.2KB | 146.3KB | 283.6µs | 2.29ms |
-| china-tjj(U64+OL) | 170.2KB | 186.3KB | 274.8µs | 2.08ms |
-| china-tjj(U64+TI) | 146.2KB | 162.3KB | 267.8µs | 2.35ms |
-| china-tjj(U64+OL+TI) | 186.2KB | 202.3KB | 271.6µs | 2.11ms |
-| BobuSumisu-ac | 8.27MB | 9.31MB | 1.24ms | 726.9µs |
-| BobuSumisu-go-ac | 200.1KB | 493.9KB | 5.84ms | 708.0µs |
-| anknown | 293.4KB | 1.70MB | 836.9µs | 1.34ms |
-| TheFutureIsOurs | 160.1KB | 1.02MB | 437.6µs | 821.3µs |
-| orbit-w | 229.8KB | 1008.0KB | 426.6µs | 737.2µs |
-| sepetrov | 816.0KB | 1.00MB | 659.2µs | 2.79ms |
-| cloudflare | 23.84MB | 24.09MB | 4.28ms | 684.2µs |
-| petar-dambovaliev | 462.7KB | 1.43MB | 676.1µs | 2.16ms |
-| iohub | 428.0KB | 1005.4KB | 435.5µs | 1.02ms |
-| ClarkThan | 748.5KB | 777.2KB | 534.7µs | 2.60ms |
-| pgavlin | 462.7KB | 1.42MB | 664.0µs | 2.15ms |
-| gnames | 955.8KB | 1.23MB | 1.01ms | 3.08ms |
+| china-tjj | 32.2KB | 36.3KB | 238.3µs | 2.73ms |
+| china-tjj(FB) | 32.2KB | 92.4KB | 195.9µs | 2.76ms |
+| china-tjj(U64) | 117.0KB | 133.0KB | 231.2µs | 2.53ms |
+| china-tjj(U64+OL) | 157.0KB | 173.0KB | 227.0µs | 2.13ms |
+| china-tjj(U64+TI) | 133.0KB | 149.0KB | 229.5µs | 2.53ms |
+| china-tjj(U64+OL+TI) | 173.0KB | 189.0KB | 249.1µs | 2.14ms |
+| BobuSumisu-ac | 8.27MB | 9.31MB | 1.25ms | 687.6µs |
+| BobuSumisu-go-ac | 200.1KB | 493.9KB | 5.61ms | 641.5µs |
+| anknown | 293.4KB | 1.70MB | 823.5µs | 1.41ms |
+| TheFutureIsOurs | 160.1KB | 1.02MB | 406.7µs | 722.2µs |
+| orbit-w | 229.8KB | 1008.0KB | 375.3µs | 734.2µs |
+| sepetrov | 816.0KB | 1.00MB | 632.9µs | 2.70ms |
+| cloudflare | 23.84MB | 24.09MB | 4.07ms | 742.3µs |
+| petar-dambovaliev | 462.7KB | 1.43MB | 629.2µs | 2.12ms |
+| iohub | 428.0KB | 1005.4KB | 404.9µs | 1.06ms |
+| ClarkThan | 748.5KB | 777.2KB | 531.5µs | 2.50ms |
+| pgavlin | 462.7KB | 1.42MB | 641.2µs | 2.04ms |
+| gnames | 955.8KB | 1.23MB | 986.9µs | 2.97ms |
 
 #### 词表规模：10,000
 
 | 测试库 | 建树产物大小 | 建树内存申请量 | 建树耗时 | 匹配耗时 |
 |---|---|---|---|---|
-| china-tjj | 344.2KB | 384.3KB | 4.75ms | 3.37ms |
-| china-tjj(FB) | 344.2KB | 1.09MB | 3.02ms | 3.39ms |
-| china-tjj(U64) | 944.2KB | 1.08MB | 4.87ms | 3.39ms |
-| china-tjj(U64+OL) | 1.19MB | 1.34MB | 5.32ms | 3.21ms |
-| china-tjj(U64+TI) | 1.08MB | 1.23MB | 5.08ms | 3.73ms |
-| china-tjj(U64+OL+TI) | 1.34MB | 1.50MB | 5.14ms | 3.15ms |
-| BobuSumisu-ac | 68.02MB | 76.54MB | 9.63ms | 1.79ms |
-| BobuSumisu-go-ac | 1.55MB | 5.27MB | 266.67ms | 1.62ms |
-| anknown | 3.18MB | 17.80MB | 10.86ms | 2.57ms |
-| TheFutureIsOurs | 1.34MB | 10.84MB | 6.13ms | 1.51ms |
-| orbit-w | 1.73MB | 7.86MB | 6.07ms | 1.41ms |
-| sepetrov | 6.42MB | 8.74MB | 7.28ms | 5.41ms |
-| cloudflare | 243.72MB | 246.33MB | 49.75ms | 1.61ms |
-| petar-dambovaliev | 3.76MB | 15.36MB | 7.94ms | 4.46ms |
-| iohub | 3.33MB | 7.99MB | 4.00ms | 2.33ms |
-| ClarkThan | 5.90MB | 6.12MB | 5.43ms | 4.30ms |
-| pgavlin | 3.76MB | 15.28MB | 7.41ms | 4.06ms |
-| gnames | 7.47MB | 10.45MB | 10.46ms | 5.90ms |
+| china-tjj | 248.2KB | 288.3KB | 4.24ms | 3.48ms |
+| china-tjj(FB) | 248.2KB | 841.1KB | 2.76ms | 3.55ms |
+| china-tjj(U64) | 848.2KB | 1008.3KB | 4.20ms | 3.37ms |
+| china-tjj(U64+OL) | 1.09MB | 1.25MB | 4.33ms | 2.97ms |
+| china-tjj(U64+TI) | 1008.2KB | 1.14MB | 4.29ms | 3.42ms |
+| china-tjj(U64+OL+TI) | 1.25MB | 1.41MB | 4.49ms | 3.04ms |
+| BobuSumisu-ac | 68.02MB | 76.54MB | 8.90ms | 1.63ms |
+| BobuSumisu-go-ac | 1.55MB | 5.27MB | 251.35ms | 1.52ms |
+| anknown | 3.18MB | 17.80MB | 9.83ms | 2.42ms |
+| TheFutureIsOurs | 1.34MB | 10.84MB | 5.89ms | 1.32ms |
+| orbit-w | 1.73MB | 7.86MB | 5.77ms | 1.40ms |
+| sepetrov | 6.42MB | 8.74MB | 6.62ms | 4.99ms |
+| cloudflare | 243.72MB | 246.33MB | 45.70ms | 1.35ms |
+| petar-dambovaliev | 3.76MB | 15.36MB | 7.20ms | 4.08ms |
+| iohub | 3.33MB | 7.99MB | 3.99ms | 2.46ms |
+| ClarkThan | 5.90MB | 6.12MB | 5.14ms | 4.31ms |
+| pgavlin | 3.76MB | 15.28MB | 7.07ms | 4.20ms |
+| gnames | 7.47MB | 10.45MB | 10.51ms | 5.64ms |
 
 #### 词表规模：100,000
 
 | 测试库 | 建树产物大小 | 建树内存申请量 | 建树耗时 | 匹配耗时 |
 |---|---|---|---|---|
-| china-tjj | 4.38MB | 5.14MB | 57.41ms | 4.42ms |
-| china-tjj(FB) | 4.38MB | 16.93MB | 37.49ms | 4.76ms |
-| china-tjj(U64) | 7.65MB | 9.18MB | 59.29ms | 4.73ms |
-| china-tjj(U64+OL) | 9.84MB | 11.37MB | 61.82ms | 4.41ms |
-| china-tjj(U64+TI) | 9.18MB | 10.71MB | 61.03ms | 4.64ms |
-| china-tjj(U64+OL+TI) | 11.37MB | 12.90MB | 61.89ms | 4.25ms |
-| BobuSumisu-ac | 567.08MB | 637.44MB | 211.12ms | 3.89ms |
-| BobuSumisu-go-ac | 12.33MB | 46.46MB | 15.662s | 3.14ms |
-| anknown | 42.24MB | 192.22MB | 142.98ms | 5.44ms |
-| TheFutureIsOurs | 10.50MB | 96.68MB | 73.65ms | 2.26ms |
-| orbit-w | 16.26MB | 67.28MB | 140.71ms | 2.42ms |
-| sepetrov | 51.95MB | 68.84MB | 85.05ms | 12.52ms |
-| cloudflare | 2.465GB | 2.491GB | 918.64ms | 3.32ms |
-| petar-dambovaliev | 33.27MB | 133.45MB | 147.18ms | 6.01ms |
-| iohub | 26.60MB | 65.21MB | 43.18ms | 5.33ms |
-| ClarkThan | 47.83MB | 49.77MB | 82.84ms | 9.57ms |
-| pgavlin | 33.27MB | 132.59MB | 151.42ms | 5.77ms |
-| gnames | 60.81MB | 89.14MB | 146.05ms | 16.38ms |
+| china-tjj | 3.55MB | 4.32MB | 52.96ms | 4.64ms |
+| china-tjj(FB) | 3.55MB | 14.38MB | 34.86ms | 4.68ms |
+| china-tjj(U64) | 6.83MB | 8.36MB | 52.09ms | 4.53ms |
+| china-tjj(U64+OL) | 9.02MB | 10.55MB | 54.11ms | 4.17ms |
+| china-tjj(U64+TI) | 8.36MB | 9.89MB | 53.04ms | 4.87ms |
+| china-tjj(U64+OL+TI) | 10.55MB | 12.08MB | 54.05ms | 4.23ms |
+| BobuSumisu-ac | 567.08MB | 637.44MB | 165.39ms | 3.97ms |
+| BobuSumisu-go-ac | 12.33MB | 46.46MB | 16.312s | 3.58ms |
+| anknown | 42.24MB | 192.23MB | 149.08ms | 7.30ms |
+| TheFutureIsOurs | 10.50MB | 96.68MB | 69.53ms | 1.95ms |
+| orbit-w | 16.26MB | 67.28MB | 135.19ms | 2.50ms |
+| sepetrov | 51.95MB | 68.84MB | 92.35ms | 15.25ms |
+| cloudflare | 2.465GB | 2.491GB | 923.44ms | 4.51ms |
+| petar-dambovaliev | 33.27MB | 133.45MB | 150.29ms | 5.65ms |
+| iohub | 26.60MB | 65.21MB | 42.62ms | 5.37ms |
+| ClarkThan | 47.83MB | 49.77MB | 80.45ms | 8.36ms |
+| pgavlin | 33.27MB | 132.59MB | 125.17ms | 5.32ms |
+| gnames | 60.80MB | 89.14MB | 125.80ms | 13.17ms |
 
 ### 中英混合
 
@@ -257,90 +257,90 @@
 
 | 测试库 | 建树产物大小 | 建树内存申请量 | 建树耗时 | 匹配耗时 |
 |---|---|---|---|---|
-| china-tjj | 4.0KB | 4.4KB | 19.1µs | 1.29ms |
-| china-tjj(FB) | 4.0KB | 11.9KB | 19.3µs | 1.22ms |
-| china-tjj(U64) | 10.7KB | 12.5KB | 18.6µs | 1.20ms |
-| china-tjj(U64+OL) | 13.7KB | 15.5KB | 19.1µs | 1.18ms |
-| china-tjj(U64+TI) | 12.5KB | 14.3KB | 19.6µs | 1.33ms |
-| china-tjj(U64+OL+TI) | 15.5KB | 17.3KB | 19.4µs | 1.23ms |
-| BobuSumisu-ac | 1.22MB | 1.37MB | 212.2µs | 480.8µs |
-| BobuSumisu-go-ac | 32.0KB | 61.5KB | 343.1µs | 586.0µs |
-| anknown | 1.18MB | 2.00MB | 209.6µs | 890.3µs |
-| TheFutureIsOurs | 1.66MB | 5.49MB | 421.3µs | 405.0µs |
-| orbit-w | 2.20MB | 3.24MB | 281.2µs | 331.6µs |
-| sepetrov | 72.2KB | 95.0KB | 51.8µs | 922.2µs |
-| cloudflare | 2.85MB | 2.89MB | 536.0µs | 305.6µs |
-| petar-dambovaliev | 129.4KB | 252.0KB | 84.6µs | 1.36ms |
-| iohub | 52.4KB | 121.4KB | 49.7µs | 612.4µs |
-| ClarkThan | 66.6KB | 71.1KB | 41.7µs | 1.20ms |
-| pgavlin | 129.4KB | 251.0KB | 83.4µs | 1.35ms |
-| gnames | 142.6KB | 173.7KB | 109.2µs | 2.35ms |
+| china-tjj | 4.0KB | 4.4KB | 17.4µs | 1.33ms |
+| china-tjj(FB) | 4.0KB | 11.6KB | 18.0µs | 1.41ms |
+| china-tjj(U64) | 10.7KB | 12.5KB | 17.8µs | 1.41ms |
+| china-tjj(U64+OL) | 13.7KB | 15.5KB | 19.6µs | 1.17ms |
+| china-tjj(U64+TI) | 12.5KB | 14.3KB | 18.2µs | 1.34ms |
+| china-tjj(U64+OL+TI) | 15.5KB | 17.3KB | 18.7µs | 1.22ms |
+| BobuSumisu-ac | 1.22MB | 1.37MB | 198.2µs | 397.3µs |
+| BobuSumisu-go-ac | 32.0KB | 61.5KB | 324.2µs | 536.8µs |
+| anknown | 1.18MB | 2.00MB | 201.2µs | 810.2µs |
+| TheFutureIsOurs | 1.66MB | 5.49MB | 438.3µs | 360.2µs |
+| orbit-w | 2.20MB | 3.24MB | 259.9µs | 336.0µs |
+| sepetrov | 72.2KB | 95.0KB | 48.2µs | 854.4µs |
+| cloudflare | 2.85MB | 2.89MB | 515.2µs | 369.4µs |
+| petar-dambovaliev | 129.4KB | 252.0KB | 83.9µs | 1.39ms |
+| iohub | 52.4KB | 121.4KB | 51.3µs | 597.6µs |
+| ClarkThan | 66.6KB | 71.1KB | 42.3µs | 1.17ms |
+| pgavlin | 129.4KB | 251.0KB | 81.9µs | 1.38ms |
+| gnames | 142.6KB | 173.7KB | 112.8µs | 2.59ms |
 
 #### 词表规模：1,000
 
 | 测试库 | 建树产物大小 | 建树内存申请量 | 建树耗时 | 匹配耗时 |
 |---|---|---|---|---|
-| china-tjj | 36.2KB | 40.3KB | 245.9µs | 1.65ms |
-| china-tjj(FB) | 36.2KB | 113.8KB | 200.9µs | 1.63ms |
-| china-tjj(U64) | 98.2KB | 114.3KB | 240.8µs | 1.60ms |
-| china-tjj(U64+OL) | 126.2KB | 142.3KB | 254.1µs | 1.50ms |
-| china-tjj(U64+TI) | 114.2KB | 130.3KB | 241.2µs | 1.72ms |
-| china-tjj(U64+OL+TI) | 142.2KB | 158.3KB | 240.8µs | 1.63ms |
-| BobuSumisu-ac | 10.77MB | 12.12MB | 1.66ms | 528.7µs |
-| BobuSumisu-go-ac | 264.1KB | 704.0KB | 8.97ms | 604.1µs |
-| anknown | 1.59MB | 4.15MB | 887.1µs | 861.6µs |
-| TheFutureIsOurs | 2.09MB | 6.36MB | 760.1µs | 504.1µs |
-| orbit-w | 2.77MB | 4.19MB | 614.7µs | 454.0µs |
-| sepetrov | 678.2KB | 948.0KB | 575.6µs | 1.36ms |
-| cloudflare | 27.93MB | 28.25MB | 4.84ms | 659.6µs |
-| petar-dambovaliev | 591.1KB | 1.82MB | 781.5µs | 1.86ms |
-| iohub | 428.0KB | 1.07MB | 530.8µs | 803.9µs |
-| ClarkThan | 626.5KB | 668.6KB | 449.2µs | 1.51ms |
-| pgavlin | 591.1KB | 1.81MB | 801.9µs | 1.88ms |
-| gnames | 1.22MB | 1.55MB | 1.13ms | 2.82ms |
+| china-tjj | 36.2KB | 40.3KB | 250.3µs | 1.98ms |
+| china-tjj(FB) | 36.2KB | 111.1KB | 199.1µs | 1.99ms |
+| china-tjj(U64) | 98.2KB | 114.3KB | 245.4µs | 1.79ms |
+| china-tjj(U64+OL) | 126.2KB | 142.3KB | 239.6µs | 1.62ms |
+| china-tjj(U64+TI) | 114.2KB | 130.3KB | 235.9µs | 1.68ms |
+| china-tjj(U64+OL+TI) | 142.2KB | 158.3KB | 240.3µs | 1.59ms |
+| BobuSumisu-ac | 10.77MB | 12.12MB | 1.64ms | 526.6µs |
+| BobuSumisu-go-ac | 264.1KB | 704.0KB | 8.78ms | 596.7µs |
+| anknown | 1.59MB | 4.15MB | 867.4µs | 843.3µs |
+| TheFutureIsOurs | 2.09MB | 6.36MB | 753.5µs | 486.9µs |
+| orbit-w | 2.77MB | 4.19MB | 592.0µs | 469.2µs |
+| sepetrov | 678.2KB | 948.0KB | 549.5µs | 1.27ms |
+| cloudflare | 27.93MB | 28.25MB | 4.76ms | 695.5µs |
+| petar-dambovaliev | 591.1KB | 1.82MB | 736.9µs | 1.79ms |
+| iohub | 428.0KB | 1.07MB | 490.4µs | 787.4µs |
+| ClarkThan | 626.5KB | 668.6KB | 437.6µs | 1.49ms |
+| pgavlin | 591.1KB | 1.81MB | 718.3µs | 1.77ms |
+| gnames | 1.22MB | 1.55MB | 1.11ms | 2.67ms |
 
 #### 词表规模：10,000
 
 | 测试库 | 建树产物大小 | 建树内存申请量 | 建树耗时 | 匹配耗时 |
 |---|---|---|---|---|
-| china-tjj | 322.9KB | 370.9KB | 4.38ms | 1.28ms |
-| china-tjj(FB) | 322.9KB | 1.02MB | 2.40ms | 1.37ms |
-| china-tjj(U64) | 868.4KB | 1.04MB | 4.50ms | 1.25ms |
-| china-tjj(U64+OL) | 1.08MB | 1.27MB | 4.51ms | 1.25ms |
-| china-tjj(U64+TI) | 1.00MB | 1.19MB | 4.46ms | 1.39ms |
-| china-tjj(U64+OL+TI) | 1.24MB | 1.43MB | 4.50ms | 1.33ms |
-| BobuSumisu-ac | 92.91MB | 104.87MB | 11.76ms | 982.0µs |
-| BobuSumisu-go-ac | 2.03MB | 6.98MB | 509.42ms | 872.6µs |
-| anknown | 2.94MB | 15.01MB | 17.35ms | 1.27ms |
-| TheFutureIsOurs | 2.09MB | 12.06MB | 4.93ms | 650.7µs |
-| orbit-w | 3.11MB | 9.82MB | 25.03ms | 626.0µs |
-| sepetrov | 5.45MB | 7.52MB | 5.57ms | 2.24ms |
-| cloudflare | 278.34MB | 281.57MB | 59.21ms | 1.10ms |
-| petar-dambovaliev | 4.66MB | 18.89MB | 7.97ms | 2.66ms |
-| iohub | 3.33MB | 8.95MB | 4.55ms | 1.23ms |
-| ClarkThan | 5.05MB | 5.38MB | 4.84ms | 2.44ms |
-| pgavlin | 4.66MB | 18.79MB | 10.52ms | 2.78ms |
-| gnames | 10.41MB | 13.93MB | 12.17ms | 4.32ms |
+| china-tjj | 322.9KB | 363.1KB | 4.23ms | 1.49ms |
+| china-tjj(FB) | 322.9KB | 1012.1KB | 2.41ms | 1.56ms |
+| china-tjj(U64) | 868.4KB | 1.00MB | 4.27ms | 1.48ms |
+| china-tjj(U64+OL) | 1.08MB | 1.24MB | 4.37ms | 1.31ms |
+| china-tjj(U64+TI) | 1.00MB | 1.16MB | 4.33ms | 1.47ms |
+| china-tjj(U64+OL+TI) | 1.24MB | 1.40MB | 4.43ms | 1.34ms |
+| BobuSumisu-ac | 92.91MB | 104.87MB | 10.97ms | 756.2µs |
+| BobuSumisu-go-ac | 2.03MB | 6.98MB | 483.14ms | 853.9µs |
+| anknown | 2.94MB | 15.01MB | 16.98ms | 1.29ms |
+| TheFutureIsOurs | 2.09MB | 12.06MB | 4.77ms | 625.2µs |
+| orbit-w | 3.11MB | 9.82MB | 24.36ms | 642.0µs |
+| sepetrov | 5.45MB | 7.52MB | 5.37ms | 2.04ms |
+| cloudflare | 278.34MB | 281.57MB | 53.75ms | 997.5µs |
+| petar-dambovaliev | 4.66MB | 18.89MB | 8.01ms | 2.58ms |
+| iohub | 3.33MB | 8.95MB | 4.40ms | 1.20ms |
+| ClarkThan | 5.05MB | 5.38MB | 4.35ms | 2.13ms |
+| pgavlin | 4.66MB | 18.79MB | 7.83ms | 2.53ms |
+| gnames | 10.41MB | 13.93MB | 11.42ms | 3.70ms |
 
 #### 词表规模：100,000
 
 | 测试库 | 建树产物大小 | 建树内存申请量 | 建树耗时 | 匹配耗时 |
 |---|---|---|---|---|
-| china-tjj | 3.78MB | 4.60MB | 53.61ms | 1.81ms |
-| china-tjj(FB) | 3.78MB | 12.95MB | 28.49ms | 1.97ms |
-| china-tjj(U64) | 6.61MB | 8.25MB | 54.82ms | 1.77ms |
-| china-tjj(U64+OL) | 8.48MB | 10.12MB | 58.36ms | 1.79ms |
-| china-tjj(U64+TI) | 8.14MB | 9.78MB | 54.72ms | 1.87ms |
-| china-tjj(U64+OL+TI) | 10.01MB | 11.65MB | 55.10ms | 1.82ms |
-| BobuSumisu-ac | 788.88MB | 891.76MB | 343.26ms | 1.72ms |
-| BobuSumisu-go-ac | 15.98MB | 60.00MB | 32.803s | 1.64ms |
-| anknown | 26.16MB | 144.72MB | 156.02ms | 2.26ms |
-| TheFutureIsOurs | 10.25MB | 87.62MB | 60.59ms | 961.9µs |
-| orbit-w | 13.99MB | 59.20MB | 618.63ms | 1.07ms |
-| sepetrov | 41.17MB | 55.57MB | 69.42ms | 5.19ms |
-| cloudflare | 2.770GB | 2.801GB | 1.171s | 5.83ms |
-| petar-dambovaliev | 43.58MB | 184.45MB | 212.57ms | 5.37ms |
-| iohub | 26.60MB | 73.92MB | 51.60ms | 3.52ms |
-| ClarkThan | 38.35MB | 40.36MB | 73.49ms | 4.58ms |
-| pgavlin | 43.58MB | 183.45MB | 178.10ms | 4.24ms |
-| gnames | 86.71MB | 122.45MB | 146.93ms | 8.15ms |
+| china-tjj | 3.78MB | 4.54MB | 53.33ms | 1.96ms |
+| china-tjj(FB) | 3.78MB | 12.80MB | 27.43ms | 2.04ms |
+| china-tjj(U64) | 6.61MB | 8.14MB | 53.81ms | 1.96ms |
+| china-tjj(U64+OL) | 8.48MB | 10.01MB | 54.95ms | 1.90ms |
+| china-tjj(U64+TI) | 8.14MB | 9.67MB | 53.56ms | 1.99ms |
+| china-tjj(U64+OL+TI) | 10.01MB | 11.54MB | 55.22ms | 1.82ms |
+| BobuSumisu-ac | 788.88MB | 891.76MB | 263.13ms | 1.60ms |
+| BobuSumisu-go-ac | 15.98MB | 60.00MB | 31.829s | 1.37ms |
+| anknown | 26.16MB | 144.72MB | 144.91ms | 1.95ms |
+| TheFutureIsOurs | 10.25MB | 87.62MB | 58.74ms | 861.6µs |
+| orbit-w | 13.99MB | 59.20MB | 642.73ms | 937.5µs |
+| sepetrov | 41.17MB | 55.57MB | 63.32ms | 4.16ms |
+| cloudflare | 2.770GB | 2.801GB | 1.164s | 9.60ms |
+| petar-dambovaliev | 43.58MB | 184.45MB | 196.35ms | 7.14ms |
+| iohub | 26.60MB | 73.92MB | 92.89ms | 2.50ms |
+| ClarkThan | 38.35MB | 40.36MB | 65.81ms | 3.57ms |
+| pgavlin | 43.58MB | 183.45MB | 167.48ms | 5.35ms |
+| gnames | 86.71MB | 122.45MB | 137.81ms | 6.94ms |
