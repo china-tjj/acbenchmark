@@ -13,16 +13,36 @@ import (
 	bobuac "github.com/BobuSumisu/aho-corasick"
 	bobugoac "github.com/BobuSumisu/go-ahocorasick"
 	clarkthanac "github.com/ClarkThan/ahocorasick"
+	codehardtac "github.com/Codehardt/go-ahocorasick"
+	daemonac "github.com/DaemonMonch/ac"
+	icarusac "github.com/Icarus0xff/ahocorasick"
+	leon180ac "github.com/Leon180/AhoCorasick/ahocorasick"
 	thefutureisoursac "github.com/TheFutureIsOurs/ahocorasick"
 	anknownac "github.com/anknown/ahocorasick"
+	arkadijsac "github.com/arkadijs/ahocorasick-go"
 	tjjac "github.com/china-tjj/ahocorasick"
+	chowyu12ac "github.com/chowyu12/ahocorasick"
 	cloudflareac "github.com/cloudflare/ahocorasick"
+	codefeverac "github.com/codefever/ahocorasick"
+	coregxac "github.com/coregx/ahocorasick"
+	gansiduiac "github.com/gansidui/ahocorasick"
 	gnamesac "github.com/gnames/aho_corasick"
+	hkspirtac "github.com/hkspirt/ahocorasick"
 	iohubac "github.com/iohub/ahocorasick"
+	jsphlimac "github.com/jsphLim/Base_AhoCorasick/aho-Corasick/ac"
+	swdac "github.com/kirklin/go-swd"
+	kiry163ac "github.com/kiry163/ahocorasick"
+	mangotreeac "github.com/mangotree2/ahocorasick"
+	ofwac "github.com/ofw/ahocorasick"
 	orbitwac "github.com/orbit-w/aho_corasick"
 	petarac "github.com/petar-dambovaliev/aho-corasick"
 	pgavlinac "github.com/pgavlin/aho-corasick"
+	pombredanneac "github.com/pombredanne/ahocorasick"
+	ray86ac "github.com/raaaaaaaay86/ahocorasick"
+	rrethyac "github.com/rrethy/ahocorasick"
 	sepetrovac "github.com/sepetrov/ahocorasick"
+	smotesac "github.com/smotes/ahocorasick"
+	yanlinac "github.com/yanlinLiu0424/ahocorasick"
 )
 
 // ── library adapters ──────────────────────────────
@@ -180,6 +200,243 @@ var libs = []lib{
 			},
 			func() int { return len(trie.Search(t)) },
 			func() { trie = nil }
+	}},
+	{"gansidui", func(p []string, t string) (func(), func() int, func()) {
+		var m *gansiduiac.Matcher
+		return func() { m = gansiduiac.BuildNewMatcher(p) },
+			func() int { return len(m.Match(t)) },
+			func() { m = nil }
+	}},
+	{"coregx", func(p []string, t string) (func(), func() int, func()) {
+		var ac *coregxac.Automaton
+		tb := []byte(t)
+		return func() {
+				built, err := coregxac.NewBuilder().AddStrings(p).Build()
+				if err != nil {
+					panic(err)
+				}
+				ac = built
+			},
+			func() int { return len(ac.FindAllOverlapping(tb)) },
+			func() { ac = nil }
+	}},
+	{"RRethy", func(p []string, t string) (func(), func() int, func()) {
+		var m *rrethyac.Matcher
+		return func() { m = rrethyac.CompileStrings(p) },
+			func() int { return len(m.FindAllString(t)) },
+			func() { m = nil }
+	}},
+	{"hkspirt", func(p []string, t string) (func(), func() int, func()) {
+		var m *hkspirtac.ACMatcher
+		return func() { m = hkspirtac.NewMatcher(p) },
+			func() int { return len(m.Match(t)) },
+			func() { m = nil }
+	}},
+	{"arkadijs", func(p []string, t string) (func(), func() int, func()) {
+		var tr *arkadijsac.Tree
+		return func() {
+				tr = arkadijsac.New()
+				for _, s := range p {
+					_ = tr.Add(s)
+				}
+			},
+			func() int {
+				n := 0
+				for range tr.Search(t) {
+					n++
+				}
+				return n
+			},
+			func() { tr = nil }
+	}},
+	{"yanlinLiu0424", func(p []string, t string) (func(), func() int, func()) {
+		var ac *yanlinac.ACKS
+		tb := []byte(t)
+		return func() {
+				ac = yanlinac.NewACKS()
+				for i, s := range p {
+					_ = ac.AddPattern(yanlinac.Pattern{Content: []byte(s), ID: uint(i)})
+				}
+				ac.Build()
+			},
+			func() int {
+				r, _ := ac.Search(tb)
+				return len(r)
+			},
+			func() { ac = nil }
+	}},
+	{"pombredanne", func(p []string, t string) (func(), func() int, func()) {
+		var a pombredanneac.AhoCorasick
+		return func() { a = pombredanneac.NewAhoCorasick(p) },
+			func() int {
+				n := 0
+				for range pombredanneac.MatchString(t, a) {
+					n++
+				}
+				return n
+			},
+			func() { a = nil }
+	}},
+	{"ofw", func(p []string, t string) (func(), func() int, func()) {
+		var m *ofwac.Matcher
+		return func() {
+				m = ofwac.NewMatcher()
+				m.Build(p)
+			},
+			func() int { return len(m.Match(t)) },
+			func() { m = nil }
+	}},
+	{"Icarus0xff", func(p []string, t string) (func(), func() int, func()) {
+		var m *icarusac.Matcher
+		return func() {
+				m = icarusac.NewMatcher()
+				m.Build(p)
+			},
+			func() int { return len(m.Search(t)) },
+			func() { m = nil }
+	}},
+	{"mangotree2", func(p []string, t string) (func(), func() int, func()) {
+		var ac *mangotreeac.AC
+		return func() {
+				dict := make(map[string]int, len(p))
+				for _, s := range p {
+					dict[s] = 0
+				}
+				ac = mangotreeac.FromDict(dict)
+			},
+			func() int { return len(ac.Handle(t)) },
+			func() { ac = nil }
+	}},
+	{"smotes", func(p []string, t string) (func(), func() int, func()) {
+		var ac smotesac.Automaton[rune, int]
+		tb := []byte(t)
+		return func() {
+				seq := func(yield func(int, []byte) bool) {
+					for i, s := range p {
+						if !yield(i, []byte(s)) {
+							return
+						}
+					}
+				}
+				built, err := smotesac.New[rune, int](seq)
+				if err != nil {
+					panic(err)
+				}
+				ac = built
+			},
+			func() int {
+				n := 0
+				for range ac.Matches(smotesac.MatchTypeOverlapping, tb) {
+					n++
+				}
+				return n
+			},
+			func() { ac = smotesac.Automaton[rune, int]{} }
+	}},
+	{"Codehardt", func(p []string, t string) (func(), func() int, func()) {
+		var m codehardtac.AhoCorasick
+		return func() { m = codehardtac.New(p) },
+			func() int { return len(m.Match(t)) },
+			func() { m = nil }
+	}},
+	{"DaemonMonch", func(p []string, t string) (func(), func() int, func()) {
+		var tr *daemonac.Trie
+		return func() {
+				tr = daemonac.NewTrie()
+				for _, s := range p {
+					tr.AddKeyword(s)
+				}
+			},
+			func() int { return len(tr.ParseText(t)) },
+			func() { tr = nil }
+	}},
+	{"chowyu12", func(p []string, t string) (func(), func() int, func()) {
+		var ac *chowyu12ac.AhoCorasick
+		return func() {
+				ac = chowyu12ac.NewAhoCorasick()
+				ac.AddPatterns(p)
+			},
+			func() int { return len(ac.FindAll(t)) },
+			func() { ac = nil }
+	}},
+	{"codefever", func(p []string, t string) (func(), func() int, func()) {
+		var s *codefeverac.Searcher
+		return func() {
+				b := codefeverac.NewBuilder()
+				for _, w := range p {
+					b.Add(w, nil)
+				}
+				s = b.Build()
+			},
+			func() int { return len(s.Cover(t)) },
+			func() { s = nil }
+	}},
+	{"kiry163", func(p []string, t string) (func(), func() int, func()) {
+		var m *kiry163ac.Matcher
+		return func() {
+				built, err := kiry163ac.Compile(p, kiry163ac.Options{})
+				if err != nil {
+					panic(err)
+				}
+				m = built
+			},
+			func() int { return len(m.FindAllOverlapping(t)) },
+			func() { m = nil }
+	}},
+	{"Leon180", func(p []string, t string) (func(), func() int, func()) {
+		var ac *leon180ac.AhoCorasick
+		return func() {
+				if ac != nil {
+					ac.Close()
+				}
+				ac = leon180ac.NewAhoCorasick(leon180ac.AhoCorasickConfig{})
+				ac.BuildTrie(p)
+				ac.BuildFailureLinks()
+			},
+			func() int { return len(ac.Search(t)) },
+			func() {
+				if ac != nil {
+					ac.Close()
+					ac = nil
+				}
+			}
+	}},
+	{"jsphLim", func(p []string, t string) (func(), func() int, func()) {
+		var ac *jsphlimac.AhoCorasick
+		return func() {
+				ac = jsphlimac.CreateAhoCorasick()
+				for _, s := range p {
+					ac.Add(s)
+				}
+				ac.BuildAhoCorasick()
+			},
+			func() int { return len(ac.ScanAhoCorasick(t)) },
+			func() { ac = nil }
+	}},
+	{"Raaaaaaaay86", func(p []string, t string) (func(), func() int, func()) {
+		var tr *ray86ac.Node
+		return func() { tr = ray86ac.NewTrie(p) },
+			func() int { return len(tr.FindAllMatches(t)) },
+			func() { tr = nil }
+	}},
+	{"go-swd", func(p []string, t string) (func(), func() int, func()) {
+		var e *swdac.Engine
+		return func() {
+				eng, err := swdac.New(swdac.WithoutDefaultDict())
+				if err != nil {
+					panic(err)
+				}
+				words := make(map[string]swdac.Category, len(p))
+				for _, s := range p {
+					words[s] = swdac.Custom
+				}
+				if err := eng.AddWords(words); err != nil {
+					panic(err)
+				}
+				e = eng
+			},
+			func() int { return len(e.MatchAll(t)) },
+			func() { e = nil }
 	}},
 }
 
@@ -349,12 +606,26 @@ func Benchmark(b *testing.B) {
 			buildFn, matchFn, resetFn := l.setup(tc.patterns, tc.text)
 
 			// ── Build ──
+			// 构建失败（库不支持该数据或构建期 panic）时 recover 并 Skip 子项：
+			// 不产出结果行，打日志后跳过后续 Match/Reset，表格单元格留空（N/A）
+			var buildErr error
 			b.Run("Build/"+l.name+"/"+tc.name, func(b *testing.B) {
+				defer func() {
+					if r := recover(); r != nil {
+						buildErr = fmt.Errorf("%v", r)
+						b.Skip()
+					}
+				}()
 				b.ResetTimer()
 				for i := 0; i < b.N; i++ {
 					buildFn()
 				}
 			})
+			if buildErr != nil {
+				fmt.Printf("SKIP %s/%s: build error: %v\n", l.name, tc.name, buildErr)
+				resetFn()
+				continue
+			}
 
 			// ── Match ──
 			b.Run("Match/"+l.name+"/"+tc.name, func(b *testing.B) {
